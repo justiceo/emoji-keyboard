@@ -1,0 +1,14 @@
+{
+    "appName": {
+        "message": "ઇમોજી કીબોર્ડ",
+        "description": "The name of the extension"
+    },
+    "appShortName": {
+        "message": "ઇમોજી કીબોર્ડ",
+        "description": "The short-version name of the extension name"
+    },
+    "appDesc": {
+        "message": "વેબ પર ગમે ત્યાં ઇમોજીસનો ઉપયોગ કરો!",
+        "description": "The description of your extension"
+    }
+}

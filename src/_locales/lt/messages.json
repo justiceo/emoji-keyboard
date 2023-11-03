@@ -1,0 +1,14 @@
+{
+    "appName": {
+        "message": "Jaustukų klaviatūra",
+        "description": "The name of the extension"
+    },
+    "appShortName": {
+        "message": "Jaustukų klaviatūra",
+        "description": "The short-version name of the extension name"
+    },
+    "appDesc": {
+        "message": "Naudokite jaustukus bet kurioje internete!",
+        "description": "The description of your extension"
+    }
+}

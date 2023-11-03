@@ -1,0 +1,14 @@
+{
+    "appName": {
+        "message": "Hangulatjel -billentyűzet",
+        "description": "The name of the extension"
+    },
+    "appShortName": {
+        "message": "Hangulatjel -billentyűzet",
+        "description": "The short-version name of the extension name"
+    },
+    "appDesc": {
+        "message": "Használjon hangulatjeleket bárhol az interneten!",
+        "description": "The description of your extension"
+    }
+}

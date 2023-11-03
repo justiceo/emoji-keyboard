@@ -1,0 +1,14 @@
+{
+    "appName": {
+        "message": "Klávesnice emodži",
+        "description": "The name of the extension"
+    },
+    "appShortName": {
+        "message": "Klávesnice emodži",
+        "description": "The short-version name of the extension name"
+    },
+    "appDesc": {
+        "message": "Použijte emodži kdekoli na webu!",
+        "description": "The description of your extension"
+    }
+}

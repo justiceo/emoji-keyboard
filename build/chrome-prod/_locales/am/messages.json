@@ -1,0 +1,14 @@
+{
+    "appName": {
+        "message": "ኢሞጂ ቁልፍ ሰሌዳ",
+        "description": "The name of the extension"
+    },
+    "appShortName": {
+        "message": "ኢሞጂ ቁልፍ ሰሌዳ",
+        "description": "The short-version name of the extension name"
+    },
+    "appDesc": {
+        "message": "በድር ላይ በየትኛውም ቦታ ኢሞጂስን ይጠቀሙ!",
+        "description": "The description of your extension"
+    }
+}

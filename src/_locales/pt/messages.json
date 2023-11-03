@@ -1,0 +1,14 @@
+{
+    "appName": {
+        "message": "Teclado emoji",
+        "description": "The name of the extension"
+    },
+    "appShortName": {
+        "message": "Teclado emoji",
+        "description": "The short-version name of the extension name"
+    },
+    "appDesc": {
+        "message": "Use emojis em qualquer lugar da web!",
+        "description": "The description of your extension"
+    }
+}

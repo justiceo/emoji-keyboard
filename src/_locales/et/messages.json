@@ -1,0 +1,14 @@
+{
+    "appName": {
+        "message": "Emotikonide klaviatuur",
+        "description": "The name of the extension"
+    },
+    "appShortName": {
+        "message": "Emotikonide klaviatuur",
+        "description": "The short-version name of the extension name"
+    },
+    "appDesc": {
+        "message": "Kasutage emotikone kõikjal veebis!",
+        "description": "The description of your extension"
+    }
+}

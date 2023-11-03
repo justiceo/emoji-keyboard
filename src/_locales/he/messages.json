@@ -1,0 +1,14 @@
+{
+    "appName": {
+        "message": "מקלדת אמוג'י",
+        "description": "The name of the extension"
+    },
+    "appShortName": {
+        "message": "מקלדת אמוג'י",
+        "description": "The short-version name of the extension name"
+    },
+    "appDesc": {
+        "message": "השתמש באמוג'ים בכל מקום באינטרנט!",
+        "description": "The description of your extension"
+    }
+}

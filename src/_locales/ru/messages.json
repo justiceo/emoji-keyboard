@@ -1,0 +1,14 @@
+{
+    "appName": {
+        "message": "Эмодзи клавиатура",
+        "description": "The name of the extension"
+    },
+    "appShortName": {
+        "message": "Эмодзи клавиатура",
+        "description": "The short-version name of the extension name"
+    },
+    "appDesc": {
+        "message": "Используйте смайлики в любом месте в Интернете!",
+        "description": "The description of your extension"
+    }
+}

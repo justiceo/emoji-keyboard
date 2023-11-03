@@ -1,0 +1,14 @@
+{
+    "appName": {
+        "message": "ஈமோஜி விசைப்பலகை",
+        "description": "The name of the extension"
+    },
+    "appShortName": {
+        "message": "ஈமோஜி விசைப்பலகை",
+        "description": "The short-version name of the extension name"
+    },
+    "appDesc": {
+        "message": "வலையில் எங்கும் ஈமோஜிகளைப் பயன்படுத்துங்கள்!",
+        "description": "The description of your extension"
+    }
+}

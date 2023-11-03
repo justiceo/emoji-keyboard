@@ -1,0 +1,14 @@
+{
+    "appName": {
+        "message": "इमोजी कीबोर्ड",
+        "description": "The name of the extension"
+    },
+    "appShortName": {
+        "message": "इमोजी कीबोर्ड",
+        "description": "The short-version name of the extension name"
+    },
+    "appDesc": {
+        "message": "वेब पर कहीं भी इमोजी का उपयोग करें!",
+        "description": "The description of your extension"
+    }
+}

@@ -1,0 +1,14 @@
+{
+    "appName": {
+        "message": "Emoji -Tastatur",
+        "description": "The name of the extension"
+    },
+    "appShortName": {
+        "message": "Emoji -Tastatur",
+        "description": "The short-version name of the extension name"
+    },
+    "appDesc": {
+        "message": "Verwenden Sie Emojis überall im Web!",
+        "description": "The description of your extension"
+    }
+}

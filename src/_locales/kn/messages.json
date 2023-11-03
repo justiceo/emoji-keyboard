@@ -1,0 +1,14 @@
+{
+    "appName": {
+        "message": "ಎಮೋಜಿ ಕೀಬೋರ್ಡ್",
+        "description": "The name of the extension"
+    },
+    "appShortName": {
+        "message": "ಎಮೋಜಿ ಕೀಬೋರ್ಡ್",
+        "description": "The short-version name of the extension name"
+    },
+    "appDesc": {
+        "message": "ವೆಬ್‌ನಲ್ಲಿ ಎಲ್ಲಿಯಾದರೂ ಎಮೋಜಿಗಳನ್ನು ಬಳಸಿ!",
+        "description": "The description of your extension"
+    }
+}

@@ -1,0 +1,14 @@
+{
+    "appName": {
+        "message": "Emoji Keyboard",
+        "description": "The name of the extension"
+    },
+    "appShortName": {
+        "message": "Emoji Keyboard",
+        "description": "The short-version name of the extension name"
+    },
+    "appDesc": {
+        "message": "Use emojis anywhere on the web!",
+        "description": "The description of your extension"
+    }
+}
