@@ -1,3 +1,6 @@
+import Analytics from "../utils/analytics";
+import { Logger } from "../utils/logger";
+import Storage from "../utils/storage";
 /*
  * Set up context menu (right-click menu) for different conexts.
  * See reference https://developer.chrome.com/docs/extensions/reference/contextMenus/#method-create.
@@ -12,10 +15,13 @@ interface MenuItem {
 }
 
 /*
- * Prefer arrow method names -
+ * Prefer arrow method names here -
  * https://www.typescriptlang.org/docs/handbook/2/classes.html#arrow-functions.
  */
+declare var IS_DEV_BUILD: boolean;
 class ContextMenu {
+  logger = new Logger(this);
+
   RELOAD_ACTION: MenuItem = {
     menu: {
       id: "audate-reload",
@@ -28,12 +34,45 @@ class ContextMenu {
     },
   };
 
-  browserActionContextMenu: MenuItem[] = [this.RELOAD_ACTION];
+  CLEAR_STORAGE: MenuItem = {
+    menu: {
+      id: "clear-storage",
+      title: "Clear Storage",
+      visible: true,
+      contexts: ["action"],
+    },
+    handler: (unusedInfo) => {
+      chrome.storage.sync.clear();
+      chrome.storage.local.clear();
+    },
+  };
+
+  PRINT_STORAGE: MenuItem = {
+    menu: {
+      id: "print-storage",
+      title: "Print Storage",
+      visible: true,
+      contexts: ["action"],
+    },
+    handler: async (unusedInfo) => {
+      this.logger.log("Storage contents:", await Storage.getAll());
+    },
+  };
+
+  browserActionContextMenu: MenuItem[] = [];
 
   init = () => {
+    // Maybe add dev-only actions.
+    if (IS_DEV_BUILD) {
+      this.browserActionContextMenu.push(
+        this.RELOAD_ACTION,
+        this.CLEAR_STORAGE,
+        this.PRINT_STORAGE,
+      );
+    }
     // Check if we can access context menus.
     if (!chrome || !chrome.contextMenus) {
-      console.warn("No access to chrome.contextMenus");
+      this.logger.warn("No access to chrome.contextMenus");
       return;
     }
 
@@ -55,16 +94,17 @@ class ContextMenu {
       (item) => item.menu.id === info.menuItemId,
     );
     if (menuItem) {
+      Analytics.fireEvent("context_menu_click", { menu_id: info.menuItemId });
       menuItem.handler(info, tab);
     } else {
-      console.error("Unable to find menu item: ", info);
+      this.logger.error("Unable to find menu item: ", info);
     }
   };
 
   sendMessage(message: any): void {
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
       chrome.tabs.sendMessage(tabs[0].id!, message, (response) => {
-        console.debug("ack:", response);
+        this.logger.debug("ack:", response);
       });
     });
   }

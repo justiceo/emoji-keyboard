@@ -1,4 +1,3 @@
-import { SettingsUI } from "../utils/options/settings";
 import "../utils/feedback/feedback";
 import { RemoteLogger } from "../utils/logger";
 
