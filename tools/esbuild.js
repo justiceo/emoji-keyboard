@@ -130,6 +130,7 @@ class Build {
           "src/background-script/background.ts",
           "src/content-script/content-script.ts",
           "src/popup/popup.ts",
+          "src/emoji/emoji.ts",
           "src/options-page/options.js",
         ],
         bundle: true,
@@ -294,7 +295,7 @@ class Build {
         "content-script/content-script.css",
       "src/options-page/options.html": "options-page/options.html",
       "src/welcome": "welcome",
-      "src/emoji": "emoji",
+      "src/emoji/emoji.html": "emoji/emoji.html",
     };
 
     return new Promise((resolve, reject) => {

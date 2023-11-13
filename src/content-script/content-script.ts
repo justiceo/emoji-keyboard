@@ -1,3 +1,6 @@
+import "./previewr";
+import "./iframe-helper";
+import "./content-script.css";
 import { Logger } from "../utils/logger";
 
 // This is necessary for listening to logs from popup and bg.
