@@ -1,6 +1,6 @@
-import '@webcomponents/custom-elements';
-import markup from './feedback.txt.html';
-import css from './feedback.txt.css';
+import "@webcomponents/custom-elements";
+import markup from "./feedback.txt.html";
+import css from "./feedback.txt.css";
 
 /* A simple inline form that supports three sizes: inline, small and medium.
 
@@ -50,10 +50,17 @@ class FeedbackForm extends HTMLElement {
     shadow.append(style, documentFragment);
 
     const size = elem.getAttribute("size") ?? "inline";
-    const app = elem.getAttribute("app-name") ?? chrome.i18n.getMessage("appName");
-    const logo = elem.getAttribute("logo-url") ?? chrome.runtime.getURL("assets/logo-128x128.png");
-    const storeLink = elem.getAttribute("store-link") ?? "https://chrome.google.com/webstore/detail/" + chrome.i18n.getMessage("@@extension_id");
-    const formLink = elem.getAttribute("form-link") ?? "https://formspree.io/f/mayzdndj";
+    const app =
+      elem.getAttribute("app-name") ?? chrome.i18n.getMessage("appName");
+    const logo =
+      elem.getAttribute("logo-url") ??
+      chrome.runtime.getURL("assets/logo-128x128.png");
+    const storeLink =
+      elem.getAttribute("store-link") ??
+      "https://chrome.google.com/webstore/detail/" +
+        chrome.i18n.getMessage("@@extension_id");
+    const formLink =
+      elem.getAttribute("form-link") ?? "https://formspree.io/f/mayzdndj";
     console.log(`Attributes: size=${size}, app=${app}, logo=${logo}`);
 
     const multiStepForm = shadow.querySelector("[data-multi-step]");
@@ -82,7 +89,7 @@ class FeedbackForm extends HTMLElement {
         resetStarsClass();
 
         stars.forEach((star, index) =>
-          index < starIndex ? star.classList.add("full") : null
+          index < starIndex ? star.classList.add("full") : null,
         );
       };
 
@@ -95,7 +102,7 @@ class FeedbackForm extends HTMLElement {
       };
 
       stars.forEach((star) =>
-        star.addEventListener("mouseover", handleMouseOver)
+        star.addEventListener("mouseover", handleMouseOver),
       );
       stars.forEach((star) => star.addEventListener("click", handleStarClick));
       multiStepForm.addEventListener("mouseleave", resetStarsClass);
@@ -130,12 +137,12 @@ class FeedbackForm extends HTMLElement {
         }
 
         // Auto-close at the end.
-        if(currentStep == 4) {
+        if (currentStep == 4) {
           setTimeout(() => {
             multiStepForm.style.display = "none";
           }, 1300);
         }
-      })
+      }),
     );
   }
 }

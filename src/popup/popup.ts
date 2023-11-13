@@ -1,8 +1,6 @@
-
-import { SettingsUI } from '../utils/options/settings';
-import '../utils/feedback/feedback';
-import { RemoteLogger } from '../utils/logger';
-
+import { SettingsUI } from "../utils/options/settings";
+import "../utils/feedback/feedback";
+import { RemoteLogger } from "../utils/logger";
 
 document.querySelector("#go-to-options").addEventListener("click", () => {
   if (chrome.runtime.openOptionsPage) {

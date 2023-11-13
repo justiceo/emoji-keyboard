@@ -1,10 +1,10 @@
-import '@webcomponents/custom-elements';
+import "@webcomponents/custom-elements";
 import bootstrap from "./bootstrap.bundle.min.js";
 import bootstrapCSS from "./bootstrap5.txt.css";
-import formHtml from './settings.txt.html';
+import formHtml from "./settings.txt.html";
 
 export class SettingsUI extends HTMLElement {
-  configItems: any[]
+  configItems: any[];
   template!: HTMLElement;
   constructor(configItems: any[]) {
     // Always call super first in constructor
@@ -26,7 +26,6 @@ export class SettingsUI extends HTMLElement {
   adoptedCallback() {
     console.log("SettingsUI element moved to new page.");
   }
-
 
   // See https://netbasal.com/supercharge-your-forms-in-web-components-with-lit-5df42430907a
   // as potential alternative using lit.
@@ -53,8 +52,8 @@ export class SettingsUI extends HTMLElement {
     }
   `;
 
-    this.template = document.createElement('div');
-    this.template.innerHTML= formHtml;
+    this.template = document.createElement("div");
+    this.template.innerHTML = formHtml;
 
     const output = document.createElement("ul");
     output.className = "list-group";
@@ -65,7 +64,7 @@ export class SettingsUI extends HTMLElement {
 
   async saveChange(option, updatedValue) {
     console.debug("saving: ", option.id, updatedValue);
-    let configToSave =  {}
+    let configToSave = {};
     option.value = updatedValue;
     configToSave[option.id] = option;
     await chrome.storage.sync.set(configToSave);
@@ -83,24 +82,28 @@ export class SettingsUI extends HTMLElement {
 
     const eventHandler = (e: Event) => {
       const data =
-        ["checkbox", "switch"].indexOf(option.type) >= 0 ? e.target?.checked : e.target?.value;
+        ["checkbox", "switch"].indexOf(option.type) >= 0
+          ? e.target?.checked
+          : e.target?.value;
       this.saveChange(option, data);
     };
 
     const actualInput = input.getElementsByClassName(
-      "control-input"
+      "control-input",
     )[0] as HTMLInputElement;
-    ["checkbox", "switch"].indexOf(option.type) >= 0 ? actualInput.checked = !!option.value: actualInput.value = option.value;
+    ["checkbox", "switch"].indexOf(option.type) >= 0
+      ? (actualInput.checked = !!option.value)
+      : (actualInput.value = option.value);
 
     option.type === "select"
       ? actualInput.addEventListener("change", eventHandler)
       : actualInput.addEventListener("input", eventHandler);
 
-    if(option.type === "range") {
+    if (option.type === "range") {
       actualInput.min = option.min;
       actualInput.max = option.max;
     }
-    if(option.type === "select") {
+    if (option.type === "select") {
       // option.options.forEach(e => {
       //   (actualInput as unknown as HTMLSelectElement).add(new Option(e, e));
       // });
@@ -112,7 +115,7 @@ export class SettingsUI extends HTMLElement {
   showToast() {
     // Check if element is already inserted and use it, other-wise, add it.
     let toastEl = this.shadowRoot?.querySelector(".toast-container");
-    if(!toastEl) {
+    if (!toastEl) {
       toastEl = this.template.querySelector(".toast-container")!;
       this.shadowRoot?.append(toastEl);
     }

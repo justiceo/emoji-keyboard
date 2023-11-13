@@ -1,14 +1,14 @@
 {
-    "appName": {
-        "message": "絵文字キーボード",
-        "description": "The name of the extension"
-    },
-    "appShortName": {
-        "message": "絵文字キーボード",
-        "description": "The short-version name of the extension name"
-    },
-    "appDesc": {
-        "message": "ウェブ上のどこでも絵文字を使用してください！",
-        "description": "The description of your extension"
-    }
+  "appName": {
+    "message": "絵文字キーボード",
+    "description": "The name of the extension"
+  },
+  "appShortName": {
+    "message": "絵文字キーボード",
+    "description": "The short-version name of the extension name"
+  },
+  "appDesc": {
+    "message": "ウェブ上のどこでも絵文字を使用してください！",
+    "description": "The description of your extension"
+  }
 }

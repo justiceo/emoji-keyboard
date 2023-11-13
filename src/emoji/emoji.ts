@@ -106,4 +106,4 @@ class Emoji {
     document.querySelector(".no-results").hidden = foundSomething;
   };
 }
-(new Emoji()).registerListeners();
+new Emoji().registerListeners();

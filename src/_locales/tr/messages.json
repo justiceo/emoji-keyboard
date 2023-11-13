@@ -1,14 +1,14 @@
 {
-    "appName": {
-        "message": "Emoji klavye",
-        "description": "The name of the extension"
-    },
-    "appShortName": {
-        "message": "Emoji klavye",
-        "description": "The short-version name of the extension name"
-    },
-    "appDesc": {
-        "message": "Web'in herhangi bir yerinde emoji kullanın!",
-        "description": "The description of your extension"
-    }
+  "appName": {
+    "message": "Emoji klavye",
+    "description": "The name of the extension"
+  },
+  "appShortName": {
+    "message": "Emoji klavye",
+    "description": "The short-version name of the extension name"
+  },
+  "appDesc": {
+    "message": "Web'in herhangi bir yerinde emoji kullanın!",
+    "description": "The description of your extension"
+  }
 }

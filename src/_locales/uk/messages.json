@@ -1,14 +1,14 @@
 {
-    "appName": {
-        "message": "Клавіатура емоджи",
-        "description": "The name of the extension"
-    },
-    "appShortName": {
-        "message": "Клавіатура емоджи",
-        "description": "The short-version name of the extension name"
-    },
-    "appDesc": {
-        "message": "Використовуйте емоджи в будь -якому місці в Інтернеті!",
-        "description": "The description of your extension"
-    }
+  "appName": {
+    "message": "Клавіатура емоджи",
+    "description": "The name of the extension"
+  },
+  "appShortName": {
+    "message": "Клавіатура емоджи",
+    "description": "The short-version name of the extension name"
+  },
+  "appDesc": {
+    "message": "Використовуйте емоджи в будь -якому місці в Інтернеті!",
+    "description": "The description of your extension"
+  }
 }

@@ -1,14 +1,14 @@
 {
-    "appName": {
-        "message": "ഇമോജി കീബോർഡ്",
-        "description": "The name of the extension"
-    },
-    "appShortName": {
-        "message": "ഇമോജി കീബോർഡ്",
-        "description": "The short-version name of the extension name"
-    },
-    "appDesc": {
-        "message": "വെബിൽ എവിടെയെങ്കിലും ഇമോജികൾ ഉപയോഗിക്കുക!",
-        "description": "The description of your extension"
-    }
+  "appName": {
+    "message": "ഇമോജി കീബോർഡ്",
+    "description": "The name of the extension"
+  },
+  "appShortName": {
+    "message": "ഇമോജി കീബോർഡ്",
+    "description": "The short-version name of the extension name"
+  },
+  "appDesc": {
+    "message": "വെബിൽ എവിടെയെങ്കിലും ഇമോജികൾ ഉപയോഗിക്കുക!",
+    "description": "The description of your extension"
+  }
 }

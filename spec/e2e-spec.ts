@@ -1,6 +1,6 @@
 import * as puppeteer from "puppeteer";
 
-const outDir=process.env.XTENSION_OUTPUT_DIR;
+const outDir = process.env.XTENSION_OUTPUT_DIR;
 
 // To test other browsers like brave, opera, provide their executable path - https://stackoverflow.com/a/59484822.
 describe("Browser test suite", () => {
@@ -41,11 +41,15 @@ describe("Browser test suite", () => {
      * even when unit tests pass.
      */
     it("take screenshot of welcome page", async () => {
-      const pages = await browser.pages()
-      const extPage = pages.find(p => p.url().startsWith("chrome-extension://") && p.url().endsWith("/welcome/welcome.html"));
-      if(!extPage) {
-        fail("Welcome page should be open")
-        return
+      const pages = await browser.pages();
+      const extPage = pages.find(
+        (p) =>
+          p.url().startsWith("chrome-extension://") &&
+          p.url().endsWith("/welcome/welcome.html"),
+      );
+      if (!extPage) {
+        fail("Welcome page should be open");
+        return;
       }
       await extPage.screenshot({ path: "src/assets/screenshot.png" });
       await extPage.close();

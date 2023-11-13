@@ -1,4 +1,3 @@
-
 const uninstallUrl = "https://forms.gle/8e94ypTgY3ZQiR948";
 const welcomeUrl = chrome.runtime.getURL("welcome/welcome.html");
 

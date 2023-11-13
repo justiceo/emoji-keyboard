@@ -1,14 +1,14 @@
 {
-    "appName": {
-        "message": "ఎమోజి కీబోర్డ్",
-        "description": "The name of the extension"
-    },
-    "appShortName": {
-        "message": "ఎమోజి కీబోర్డ్",
-        "description": "The short-version name of the extension name"
-    },
-    "appDesc": {
-        "message": "వెబ్‌లో ఎక్కడైనా ఎమోజీలను ఉపయోగించండి!",
-        "description": "The description of your extension"
-    }
+  "appName": {
+    "message": "ఎమోజి కీబోర్డ్",
+    "description": "The name of the extension"
+  },
+  "appShortName": {
+    "message": "ఎమోజి కీబోర్డ్",
+    "description": "The short-version name of the extension name"
+  },
+  "appDesc": {
+    "message": "వెబ్‌లో ఎక్కడైనా ఎమోజీలను ఉపయోగించండి!",
+    "description": "The description of your extension"
+  }
 }

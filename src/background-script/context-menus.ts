@@ -7,7 +7,7 @@ interface MenuItem {
   menu: chrome.contextMenus.CreateProperties;
   handler: (
     info: chrome.contextMenus.OnClickData,
-    tab?: chrome.tabs.Tab
+    tab?: chrome.tabs.Tab,
   ) => void;
 }
 
@@ -18,24 +18,22 @@ interface MenuItem {
 class ContextMenu {
   RELOAD_ACTION: MenuItem = {
     menu: {
-      id: 'audate-reload',
-      title: 'Reload Extension',
+      id: "audate-reload",
+      title: "Reload Extension",
       visible: true,
-      contexts: ['action'],
+      contexts: ["action"],
     },
     handler: (unusedInfo) => {
       chrome.runtime.reload();
     },
   };
 
-  browserActionContextMenu: MenuItem[] = [
-    this.RELOAD_ACTION,
-  ];
+  browserActionContextMenu: MenuItem[] = [this.RELOAD_ACTION];
 
   init = () => {
     // Check if we can access context menus.
     if (!chrome || !chrome.contextMenus) {
-      console.warn('No access to chrome.contextMenus');
+      console.warn("No access to chrome.contextMenus");
       return;
     }
 
@@ -43,7 +41,7 @@ class ContextMenu {
     chrome.contextMenus.removeAll();
     // Add menu items.
     this.browserActionContextMenu.forEach((item) =>
-      chrome.contextMenus.create(item.menu)
+      chrome.contextMenus.create(item.menu),
     );
     /*
      * When onClick is fired, execute the handler associated
@@ -54,19 +52,19 @@ class ContextMenu {
 
   onClick = (info: chrome.contextMenus.OnClickData, tab?: chrome.tabs.Tab) => {
     const menuItem = this.browserActionContextMenu.find(
-      (item) => item.menu.id === info.menuItemId
+      (item) => item.menu.id === info.menuItemId,
     );
     if (menuItem) {
       menuItem.handler(info, tab);
     } else {
-      console.error('Unable to find menu item: ', info);
+      console.error("Unable to find menu item: ", info);
     }
   };
 
   sendMessage(message: any): void {
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
       chrome.tabs.sendMessage(tabs[0].id!, message, (response) => {
-        console.debug('ack:', response);
+        console.debug("ack:", response);
       });
     });
   }

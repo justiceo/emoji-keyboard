@@ -1,14 +1,14 @@
 {
-    "appName": {
-        "message": "คีย์บอร์ดอีโมจิ",
-        "description": "The name of the extension"
-    },
-    "appShortName": {
-        "message": "คีย์บอร์ดอีโมจิ",
-        "description": "The short-version name of the extension name"
-    },
-    "appDesc": {
-        "message": "ใช้อิโมจิทุกที่บนเว็บ!",
-        "description": "The description of your extension"
-    }
+  "appName": {
+    "message": "คีย์บอร์ดอีโมจิ",
+    "description": "The name of the extension"
+  },
+  "appShortName": {
+    "message": "คีย์บอร์ดอีโมจิ",
+    "description": "The short-version name of the extension name"
+  },
+  "appDesc": {
+    "message": "ใช้อิโมจิทุกที่บนเว็บ!",
+    "description": "The description of your extension"
+  }
 }

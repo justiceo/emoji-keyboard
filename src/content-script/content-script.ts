@@ -14,22 +14,21 @@ const L = new Logger("content-script");
 let isFloatieActive = false;
 
 const updateSuggestions = (e) => {
-    const input = e.target;
-    const caretPos = input.selectionStart;
-    const context = input.value.slice(0, caretPos);
-    const colonIndex = context.indexOf(":");
-    const pretext = context.slice(0, colonIndex);
-    const query = context.slice(colonIndex+1, caretPos);
+  const input = e.target;
+  const caretPos = input.selectionStart;
+  const context = input.value.slice(0, caretPos);
+  const colonIndex = context.indexOf(":");
+  const pretext = context.slice(0, colonIndex);
+  const query = context.slice(colonIndex + 1, caretPos);
 
-    if(colonIndex === -1) {
-        // the caret is behind the trigger, return no suggestion
-        L.log("No suggestions: out of context")
-        return;
-    }
-    if(context.length > 0) {
-        
-    }
-}
+  if (colonIndex === -1) {
+    // the caret is behind the trigger, return no suggestion
+    L.log("No suggestions: out of context");
+    return;
+  }
+  if (context.length > 0) {
+  }
+};
 
 const maybeActivateFloatie = (e) => {
   isFloatieActive = true;

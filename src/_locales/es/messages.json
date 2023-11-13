@@ -1,14 +1,14 @@
 {
-    "appName": {
-        "message": "Teclado emoji",
-        "description": "The name of the extension"
-    },
-    "appShortName": {
-        "message": "Teclado emoji",
-        "description": "The short-version name of the extension name"
-    },
-    "appDesc": {
-        "message": "¡Use emojis en cualquier lugar de la web!",
-        "description": "The description of your extension"
-    }
+  "appName": {
+    "message": "Teclado emoji",
+    "description": "The name of the extension"
+  },
+  "appShortName": {
+    "message": "Teclado emoji",
+    "description": "The short-version name of the extension name"
+  },
+  "appDesc": {
+    "message": "¡Use emojis en cualquier lugar de la web!",
+    "description": "The description of your extension"
+  }
 }

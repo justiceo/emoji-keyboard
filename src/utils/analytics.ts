@@ -64,7 +64,7 @@ export class Analytics {
               },
             ],
           }),
-        }
+        },
       );
       if (!this.debug) {
         return;

@@ -1,14 +1,14 @@
 {
-    "appName": {
-        "message": "Klawiatura emoji",
-        "description": "The name of the extension"
-    },
-    "appShortName": {
-        "message": "Klawiatura emoji",
-        "description": "The short-version name of the extension name"
-    },
-    "appDesc": {
-        "message": "Używaj emoji w dowolnym miejscu w Internecie!",
-        "description": "The description of your extension"
-    }
+  "appName": {
+    "message": "Klawiatura emoji",
+    "description": "The name of the extension"
+  },
+  "appShortName": {
+    "message": "Klawiatura emoji",
+    "description": "The short-version name of the extension name"
+  },
+  "appDesc": {
+    "message": "Używaj emoji w dowolnym miejscu w Internecie!",
+    "description": "The description of your extension"
+  }
 }

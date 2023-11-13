@@ -28,7 +28,7 @@ export class Previewr {
     if (this.inIframe()) {
       this.logger.debug(
         "Not inserting previewr in iframe: ",
-        window.location.href
+        window.location.href,
       );
       return;
     }
@@ -58,20 +58,18 @@ export class Previewr {
       this.logger.debug(
         "Ignoring message from different origin",
         event.origin,
-        event.data
+        event.data,
       );
       return;
     }
 
     if (event.data.application !== "dictionary") {
-      this.logger.debug(
-        "Ignoring origin messsage not initiated by Dictionary"
-      );
+      this.logger.debug("Ignoring origin messsage not initiated by Dictionary");
       return;
     }
 
     this.handleMessage(event.data);
-  }
+  };
 
   // Close the dialog upon any interaction with containing doc.
   onEscHandler = (evt) => {
@@ -80,7 +78,7 @@ export class Previewr {
       href: document.location.href,
       sourceFrame: iframeName,
     });
-  }
+  };
 
   async handleMessage(message) {
     this.logger.debug("#handleMessage: ", message);
@@ -131,13 +129,20 @@ export class Previewr {
 
     if (!this.dialog) {
       this.logger.debug("creating new dialog with options", winboxOptions);
-      this.dialog = new WinBox(chrome.i18n.getMessage("appName"), winboxOptions);
+      this.dialog = new WinBox(
+        chrome.i18n.getMessage("appName"),
+        winboxOptions,
+      );
     } else {
       this.logger.debug("restoring dialog");
 
       // TODO: Also reset html to ensure load is fired.
       this.dialog.setUrl(url.href);
-      this.dialog.move(winboxOptions.x, winboxOptions.y, /* skipUpdate= */false);
+      this.dialog.move(
+        winboxOptions.x,
+        winboxOptions.y,
+        /* skipUpdate= */ false,
+      );
     }
 
     // TODO: Periodically check and update the z-index.
@@ -168,7 +173,9 @@ export class Previewr {
       onclose: () => {
         this.url = undefined;
         this.dialog = undefined;
-        document.querySelectorAll("dictionary-preview-window")?.forEach(e => e.remove());
+        document
+          .querySelectorAll("dictionary-preview-window")
+          ?.forEach((e) => e.remove());
       },
     };
   }
@@ -189,9 +196,9 @@ export class Previewr {
     return new Promise((resolve: (arg0: number) => void) => {
       const z = Math.max(
         ...Array.from(document.querySelectorAll("body *"), (el) =>
-          parseFloat(window.getComputedStyle(el).zIndex)
+          parseFloat(window.getComputedStyle(el).zIndex),
         ).filter((zIndex) => !Number.isNaN(zIndex)),
-        0
+        0,
       );
       resolve(z);
     });

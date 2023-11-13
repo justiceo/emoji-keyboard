@@ -57,7 +57,7 @@ class Build {
         this.packageExtension().then((out) => console.log(out));
         break;
       default:
-        console.error("Unknown task", this.maybeTask)
+        console.error("Unknown task", this.maybeTask);
     }
   }
 
@@ -141,7 +141,7 @@ class Build {
           ".txt.css": "text",
         },
         banner: {
-          js: `var IS_DEV_BUILD=${!this.isProd};`
+          js: `var IS_DEV_BUILD=${!this.isProd};`,
         },
         outdir: this.outDir,
         target: ["chrome107"], // https://en.wikipedia.org/wiki/Google_Chrome_version_history
@@ -158,12 +158,12 @@ class Build {
         // TODO: Fire event to reload browser.
 
         console.log(
-          `Successfully rebuilt extension due to: ${event} on ${filename}`
+          `Successfully rebuilt extension due to: ${event} on ${filename}`,
         );
       } catch (e) {
         console.error("Error building extension: ", e);
       }
-    }
+    };
 
     await buildAndCatchError("initial invocation", "all files");
     console.log("Built extension and listening for changes...");
@@ -235,16 +235,18 @@ class Build {
           reject();
         }
 
-        if(!icon) {
+        if (!icon) {
           console.error("Error reading icon: ", src);
         }
 
         if (this.args.icons) {
           [16, 24, 32, 48, 128].forEach((size) => {
-            icon.clone()
+            icon
+              .clone()
               .resize(size, size)
               .write(`src/assets/logo-${size}x${size}.png`);
-            icon.clone()
+            icon
+              .clone()
               .resize(size, size)
               .greyscale()
               .write(`src/assets/logo-gray-${size}x${size}.png`);
@@ -253,29 +255,59 @@ class Build {
 
         if (this.args.screenshot) {
           // save as JPEG to avoid alpha worries.
-          icon.clone()
-            .contain(1280, 800, Jimp.VERTICAL_ALIGN_MIDDLE | Jimp.HORIZONTAL_ALIGN_CENTER)
+          icon
+            .clone()
+            .contain(
+              1280,
+              800,
+              Jimp.VERTICAL_ALIGN_MIDDLE | Jimp.HORIZONTAL_ALIGN_CENTER,
+            )
             .write(`src/assets/screenshot-contain-1280x800.JPEG`);
-          icon.clone()
-            .cover(1280, 800, Jimp.VERTICAL_ALIGN_MIDDLE | Jimp.HORIZONTAL_ALIGN_CENTER)
+          icon
+            .clone()
+            .cover(
+              1280,
+              800,
+              Jimp.VERTICAL_ALIGN_MIDDLE | Jimp.HORIZONTAL_ALIGN_CENTER,
+            )
             .write(`src/assets/screenshot-cover-1280x800.JPEG`);
         }
 
-        if(this.args.tile) {
-          icon.clone()
-            .contain(440, 280, Jimp.VERTICAL_ALIGN_MIDDLE | Jimp.HORIZONTAL_ALIGN_CENTER)
+        if (this.args.tile) {
+          icon
+            .clone()
+            .contain(
+              440,
+              280,
+              Jimp.VERTICAL_ALIGN_MIDDLE | Jimp.HORIZONTAL_ALIGN_CENTER,
+            )
             .write(`src/assets/tile-contain-440x280.JPEG`);
-          icon.clone()
-            .cover(440, 280, Jimp.VERTICAL_ALIGN_MIDDLE | Jimp.HORIZONTAL_ALIGN_CENTER)
+          icon
+            .clone()
+            .cover(
+              440,
+              280,
+              Jimp.VERTICAL_ALIGN_MIDDLE | Jimp.HORIZONTAL_ALIGN_CENTER,
+            )
             .write(`src/assets/tile-cover-440x280.JPEG`);
         }
 
-        if(this.args.marquee) {
-          icon.clone()
-            .contain(1400, 560, Jimp.VERTICAL_ALIGN_MIDDLE | Jimp.HORIZONTAL_ALIGN_CENTER)
+        if (this.args.marquee) {
+          icon
+            .clone()
+            .contain(
+              1400,
+              560,
+              Jimp.VERTICAL_ALIGN_MIDDLE | Jimp.HORIZONTAL_ALIGN_CENTER,
+            )
             .write(`src/assets/marquee-contain-1400x560.JPEG`);
-          icon.clone()
-            .cover(1400, 560, Jimp.VERTICAL_ALIGN_MIDDLE | Jimp.HORIZONTAL_ALIGN_CENTER)
+          icon
+            .clone()
+            .cover(
+              1400,
+              560,
+              Jimp.VERTICAL_ALIGN_MIDDLE | Jimp.HORIZONTAL_ALIGN_CENTER,
+            )
             .write(`src/assets/marquee-cover-1400x560.JPEG`);
         }
 
@@ -317,7 +349,7 @@ class Build {
                 resolve();
               }
             }
-          }
+          },
         );
       }
     });

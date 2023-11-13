@@ -7,6 +7,7 @@ Use emojis anywhere on the web!
 ![Screenshot](src/assets/screenshot.png "Screenshot")
 
 ## Downloads
+
 <table cellspacing="0" cellpadding="0">
   <tr style="text-align: center">
     <td valign="center">
@@ -44,10 +45,10 @@ Use emojis anywhere on the web!
 
 ## Features
 
-* Privacy-friendly.
-* Highly configurable options page.
-* Disable for specific sites.
-* Sync settings across browsers.
+- Privacy-friendly.
+- Highly configurable options page.
+- Disable for specific sites.
+- Sync settings across browsers.
 
 ## Project setup
 
@@ -67,10 +68,10 @@ npm run translate
 
 # Start an instance of Chromium with extension installed (using puppeteer)
 # For Firefox, pass --browser=firefox as argument.
-npm run build start 
+npm run build start
 
 # Build and package extension into a store-ready upload
-node tools/esbuild.js build --prod 
+node tools/esbuild.js build --prod
 
 # Create extension package for Firefox/Opera/Edge by specifying --browser argument
 node tools/esbuild.js build --prod  --browser=firefox
@@ -82,11 +83,13 @@ npm run test
 ### Install Locally
 
 #### Chrome
+
 1. Open chrome and navigate to extensions page using this URL: chrome://extensions.
 2. Enable the "Developer mode".
 3. Click "Load unpacked extension" button, browse the `build/chrome-dev` directory and select it.
 
 ### Firefox
+
 1. Open firefox and navigate to `about:debugging#/runtime/this-firefox`.
 2. Click the "Load Temporary Add-on" button.
 3. Browse the `build/firefox-dev` directory and select the `manifest.json` file.

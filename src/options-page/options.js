@@ -1,6 +1,6 @@
-import './options.css'
-import { SettingsUI } from '../utils/options/settings';
-import {WinBox} from '../utils/winbox/winbox';
+import "./options.css";
+import { SettingsUI } from "../utils/options/settings";
+import { WinBox } from "../utils/winbox/winbox";
 
 class OptionsPage {
   render(options) {
@@ -12,10 +12,9 @@ class OptionsPage {
       width: "400px",
       height: "400px",
       shadowel: "test-shadow",
-      html: `<h1>Hello winbox</h1>`
+      html: `<h1>Hello winbox</h1>`,
     });
   }
-
 }
 
 const config = [
@@ -71,4 +70,3 @@ const config = [
 ];
 let op = new OptionsPage();
 op.render(config);
-
