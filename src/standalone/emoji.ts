@@ -31,6 +31,7 @@ class Emoji {
     const emoji = evt.target?.closest(".js-emoji");
     if (!emoji) {
       this.logger.debug("No emoji found");
+      return;
     }
     getSelection()?.removeAllRanges();
     var range = document.createRange();

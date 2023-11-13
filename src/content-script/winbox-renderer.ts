@@ -1,45 +1,13 @@
 import { Logger } from "../utils/logger";
 import { WinBox } from "../utils/winbox/winbox";
 import { computePosition, flip, offset, shift } from "@floating-ui/dom";
-import "./previewr.css";
 import manifest from "../manifest.json";
 
-// Export the dialog dom
-WinBox.prototype.getDom = function () {
-  return this.dom;
-};
-
-WinBox.prototype.startLoading = function () {
-  this.dom.querySelector(".loading").style.display = "block";
-};
-WinBox.prototype.stopLoading = function () {
-  this.dom.querySelector(".loading").style.display = "none";
-};
-
-// This class is responsible to loading/reloading/unloading the angular app into the UI.
 export class WinboxRenderer {
   logger = new Logger(this);
   iframeName = manifest.__package_name + "/mainframe";
   dialog?: WinBox;
   urlBase = chrome.runtime.getURL("standalone/emoji.html#");
-
-  onMessageHandler = (event) => {
-    if (event.origin !== window.location.origin) {
-      this.logger.debug(
-        "Ignoring message from different origin",
-        event.origin,
-        event.data,
-      );
-      return;
-    }
-
-    if (event.data.application !== manifest.__package_name) {
-      this.logger.debug("Ignoring origin messsage not initiated by Dictionary");
-      return;
-    }
-
-    this.handleMessage(event.data);
-  };
 
   // Close the dialog upon any interaction with containing doc.
   onEscHandler = (evt) => {
@@ -74,9 +42,6 @@ export class WinboxRenderer {
       case "loaded-and-no-def":
         // TODO: If verbose-define, show NO definition found.
         this.dialog?.close();
-        break;
-      case "unload":
-        this.dialog?.startLoading();
         break;
       case "escape":
         this.dialog?.close();
