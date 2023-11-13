@@ -1,5 +1,4 @@
 {
-
   "name": "__MSG_appName__",
   "description": "__MSG_appDesc__",
   "short_name": "__MSG_appShortName_",
@@ -9,6 +8,8 @@
   "__comment:version__": "Firefox does not support leading zeros in versions",
   "version": "23.3.24",
   "__sentry_dsn__": "https://b1d81a9e5f1546f79885a473ce33128c@o526305.ingest.sentry.io/6244539",
+  "__measurement_id": "G-JWLV6CJVSJ",
+  "__ga_api_secret": "E2EWHH--QbSaf9-f0ePC5g",
   "manifest_version": 3,
   "default_locale": "en",
   "author": "Justice Ogbonna",
@@ -23,12 +24,14 @@
     "default_title": "__MSG_appName__",
     "default_popup": "popup/popup.html"
   },
-  "content_scripts": [{
-    "matches": ["http://*/*", "https://*/*"],
-    "all_frames": true,
-    "js": ["content-script/content-script.js"],
-    "css": ["content-script/content-script.css"]
-  }],
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "all_frames": true,
+      "js": ["content-script/content-script.js"],
+      "css": ["content-script/content-script.css"]
+    }
+  ],
   "icons": {
     "16": "assets/logo-16x16.png",
     "32": "assets/logo-32x32.png",
@@ -47,8 +50,8 @@
   },
   "__firefox__key": "",
   "__firefox__browser_specific_settings": {
-      "gecko": {
-          "id": "no-reply@justiceo.com"
-      }
+    "gecko": {
+      "id": "no-reply@justiceo.com"
+    }
   }
 }
