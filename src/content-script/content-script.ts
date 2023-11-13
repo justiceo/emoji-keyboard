@@ -2,9 +2,46 @@ import "./previewr";
 import "./iframe-helper";
 import "./content-script.css";
 import { Logger } from "../utils/logger";
+import { WinboxRenderer } from "./winbox-renderer";
 
-// This is necessary for listening to logs from popup and bg.
-const L = new Logger("content-script");
+class ContentScript {
+  logger = new Logger(this);
+  winboxRenderer = new WinboxRenderer();
+
+  init() {
+    if (this.inIframe()) {
+      // todo: run iframe helper
+    } else {
+      window.addEventListener(
+        "message",
+        this.winboxRenderer.onMessageHandler,
+        false,
+      );
+      document.onkeydown = this.winboxRenderer.onEscHandler;
+      document.onscroll = this.winboxRenderer.onEscHandler;
+      document.onresize = this.winboxRenderer.onEscHandler;
+
+      window.postMessage({
+        application: "emoji-keyboard",
+        action: "emoji-search",
+        data: "smile",
+      });
+    }
+  }
+
+  /*
+   * Returns true if this script is running inside an iframe,
+   * since the content script is added to all frames.
+   */
+  inIframe() {
+    try {
+      return window.self !== window.top;
+    } catch (e) {
+      return true;
+    }
+  }
+}
+new ContentScript().init();
 
 // Listen for ":" keydown
 // Show a floaty with suggestions based on last three keywords (minus articles)

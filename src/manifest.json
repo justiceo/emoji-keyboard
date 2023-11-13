@@ -4,10 +4,10 @@
   "short_name": "__MSG_appShortName_",
   "__comment:homepage_url": "This should be the webstore link, __MSG_@@extension_id__ is not allowed",
   "homepage_url": "https://chrome.google.com/webstore/detail/nekacekgelnakbmhepjioandkacfablo",
-  "__package_name__": "emoji-keyboard",
-  "__comment:version__": "Firefox does not support leading zeros in versions",
+  "__package_name": "emoji-keyboard",
+  "__comment:version": "Firefox does not support leading zeros in versions",
   "version": "23.3.24",
-  "__sentry_dsn__": "https://b1d81a9e5f1546f79885a473ce33128c@o526305.ingest.sentry.io/6244539",
+  "__sentry_dsn": "https://b1d81a9e5f1546f79885a473ce33128c@o526305.ingest.sentry.io/6244539",
   "__measurement_id": "G-JWLV6CJVSJ",
   "__ga_api_secret": "E2EWHH--QbSaf9-f0ePC5g",
   "manifest_version": 3,
@@ -41,6 +41,10 @@
   "web_accessible_resources": [
     {
       "resources": ["assets/logo-24x24.png"],
+      "matches": ["<all_urls>"]
+    },
+    {
+      "resources": ["standalone/emoji.html"],
       "matches": ["<all_urls>"]
     }
   ],
