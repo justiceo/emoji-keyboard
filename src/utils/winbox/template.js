@@ -49,6 +49,8 @@ export const winboxcss = `
     text-align: left;
     /* workaround for using passive listeners */
     touch-action: none;
+    border-radius: 10px;
+    overflow: hidden;
   }
   .wb-header {
     position: absolute;
