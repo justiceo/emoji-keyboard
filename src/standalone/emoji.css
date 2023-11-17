@@ -50,6 +50,10 @@ footer {
 }
 
 .site-header {
+  display: none;
+}
+
+.site-header {
   white-space: nowrap;
   position: relative;
   line-height: 1;
@@ -103,6 +107,7 @@ ul {
   text-align: left;
   padding: 0;
   margin: 0;
+  white-space: nowrap;
 }
 
 .plain {
