@@ -22,12 +22,6 @@ class ContentScript {
       document.onscroll = this.winboxRenderer.onEscHandler;
       document.onresize = this.winboxRenderer.onEscHandler;
 
-      window.postMessage({
-        application: "emoji-keyboard",
-        action: "emoji-search",
-        data: "smile",
-      });
-
       window.addEventListener("keypress", this.emojiTriggerScanner);
     }
   }
@@ -66,12 +60,23 @@ class ContentScript {
 
   maybeActivateFloatie = (e) => {
     this.isFloatieActive = true;
-    this.logger.log("floatie activated", e);
+    window.postMessage({
+      application: "emoji-keyboard",
+      action: "emoji-search",
+      data: "",
+      point: e.target.getBoundingClientRect(),
+    });
   };
 
   maybeUpdateSuggestions = (e) => {
     if (this.isFloatieActive) {
       this.logger.log("suggestions updated", e);
+      window.postMessage({
+        application: "emoji-keyboard",
+        action: "emoji-search",
+        data: e.key,
+        point: e.target.getBoundingClientRect(),
+      });
     }
   };
 
