@@ -83,6 +83,7 @@ export class WinboxRenderer {
       icon: chrome.runtime.getURL("assets/logo-24x24.png"),
       x: pos.x,
       y: pos.y,
+      header: 0.0001, // 0 would be ignored as falsy.
       width: "410px",
       height: "400px",
       autosize: false,
