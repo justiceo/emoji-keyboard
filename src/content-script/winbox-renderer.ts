@@ -84,8 +84,8 @@ export class WinboxRenderer {
       x: pos.x,
       y: pos.y,
       header: 0.0001, // 0 would be ignored as falsy.
-      width: "410px",
-      height: "400px",
+      width: "300px",
+      height: "30px",
       autosize: false,
       class: ["no-max", "no-full", "no-min", "no-resize", "no-move"],
       index: await this.getMaxZIndex(),
@@ -126,8 +126,8 @@ export class WinboxRenderer {
     };
     const div = document.createElement("div");
     // These dimensions need to match that of the dialog precisely.
-    div.style.width = "410px";
-    div.style.height = "400px";
+    div.style.width = "300px";
+    div.style.height = "30px";
     div.style.position = "fixed";
     div.style.visibility = "hidden";
     document.body.appendChild(div);
@@ -135,7 +135,7 @@ export class WinboxRenderer {
       placement: "top",
       strategy: "fixed", // If you use "fixed", x, y would change to clientX/Y.
       middleware: [
-        offset(12), // Space between mouse and tooltip.
+        offset(5), // Space between mouse and tooltip.
         flip(),
         shift({ padding: 5 }), // Space from the edge of the browser.
       ],
