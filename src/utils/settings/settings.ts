@@ -22,6 +22,7 @@ export interface Config {
   options?: SelectOption[];
   min?: string;
   max?: string;
+  step?: string;
 }
 
 export class SettingsUI extends HTMLElement {
@@ -118,6 +119,7 @@ export class SettingsUI extends HTMLElement {
     if (config.type === "range") {
       actualInput.min = config.min ?? "0";
       actualInput.max = config.max ?? "5";
+      actualInput.step = config.step ?? "1";
       actualInput.addEventListener("input", (e: Event) =>
         this.saveChange(config, (e.target as HTMLInputElement).value),
       );

@@ -131,7 +131,7 @@ class Build {
           "src/content-script/content-script.ts",
           "src/popup/popup.ts",
           "src/standalone/emoji.ts",
-          "src/options-page/options.js",
+          "src/options-page/options.ts",
           "src/utils/settings/settings.ts",
           "src/utils/winbox/winbox.js",
         ],

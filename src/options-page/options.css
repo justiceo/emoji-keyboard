@@ -1,3 +1,5 @@
+@import url("../../node_modules/bootstrap/dist/css/bootstrap.css");
+
 input[type="checkbox"] {
   /* Double-sized Checkboxes */
   -ms-transform: scale(1.4); /* IE */
@@ -9,6 +11,13 @@ input[type="checkbox"] {
 
 .collapse {
   margin-top: 15px;
+}
+
+.form-switch i {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+  width: 20px;
+  height: 20px;
+  display: block;
 }
 
 .nice-select {
@@ -335,7 +344,7 @@ ul {
   padding-left: 16px;
 }
 
-a:not(.button) {
+/* a:not(.button) {
   color: #55a1fb;
   outline: none;
   text-decoration: none;
@@ -346,7 +355,7 @@ a:not(.button) {
 a:not(.button):hover,
 a:not(.button):focus {
   border-bottom: 1px solid #88bfff;
-}
+} */
 
 ::-moz-selection {
   background: #f3f4f7;
@@ -357,7 +366,7 @@ a:not(.button):focus {
 }
 
 .container {
-  margin: 96px auto 60px;
+  margin: 50px auto 60px;
   max-width: 40em;
 }
 
