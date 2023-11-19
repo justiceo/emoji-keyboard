@@ -46,7 +46,8 @@ export class WinboxRenderer {
         this.logger.debug("hovered on ", emoji.description[0]);
 
         this.dialog!.dom.querySelector(".wb-notice").classList.remove('success', "hidden");
-        this.dialog!.dom.querySelector(".wb-notice").innerHTML = ":" + emoji.description[0];
+        const truncate = (input) => input.length > 31 ? `${input.substring(0, 28)}...` : input;
+        this.dialog!.dom.querySelector(".wb-notice").innerHTML = ":" + truncate(emoji.description[0]);
       });
       el.addEventListener("click", (e) => {
         this.logger.debug("clicked on ", emoji.description[0]);
