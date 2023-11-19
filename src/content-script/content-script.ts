@@ -1,4 +1,3 @@
-import "./iframe-helper";
 import "./content-script.css";
 import { Logger } from "../utils/logger";
 import { WinboxRenderer } from "./winbox-renderer";
@@ -40,14 +39,14 @@ class ContentScript {
       this.logger.debug(
         "Ignoring message from different origin",
         event.origin,
-        event.data,
+        event.data
       );
       return;
     }
 
     if (event.data.application !== manifest.__package_name) {
       this.logger.debug(
-        "Ignoring origin messsage not initiated by emoji-keyboard",
+        "Ignoring origin messsage not initiated by emoji-keyboard"
       );
       return;
     }

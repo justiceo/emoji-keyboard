@@ -1,21 +1,17 @@
 import { Logger } from "../utils/logger";
 import { WinBox } from "../utils/winbox/winbox";
 import { computePosition, flip, offset, shift } from "@floating-ui/dom";
-import manifest from "../manifest.json";
 import { i18n } from "../utils/i18n";
 
 export class WinboxRenderer {
   logger = new Logger(this);
-  iframeName = manifest.__package_name + "/mainframe";
   dialog?: WinBox;
-  urlBase = chrome.runtime.getURL("standalone/emoji.html#");
 
   // Close the dialog upon any interaction with containing doc.
   onEscHandler = (evt) => {
     this.handleMessage({
       action: "escape",
       href: document.location.href,
-      sourceFrame: this.iframeName,
     });
   };
 
@@ -28,6 +24,12 @@ export class WinboxRenderer {
           message.data.emojis,
           message.point
         );
+        break;
+      case "emoji-hover":
+        // todo: display emoji title;
+        break;
+      case "emoji-click":
+        // todo: display "copied" notice
         break;
       case "escape":
         this.dialog?.close();
