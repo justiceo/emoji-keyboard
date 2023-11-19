@@ -1,4 +1,4 @@
-import enUsEmoji from "../assets/emoji-en-US.json";
+import enUsEmoji from "./emoji-en-US.json";
 import "./emoji.css";
 import { Logger } from "../utils/logger";
 
