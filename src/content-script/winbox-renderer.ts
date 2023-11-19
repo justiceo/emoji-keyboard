@@ -2,6 +2,7 @@ import { Logger } from "../utils/logger";
 import { WinBox } from "../utils/winbox/winbox";
 import { computePosition, flip, offset, shift } from "@floating-ui/dom";
 import manifest from "../manifest.json";
+import { i18n } from "../utils/i18n";
 
 export class WinboxRenderer {
   logger = new Logger(this);
@@ -21,27 +22,12 @@ export class WinboxRenderer {
   async handleMessage(message) {
     this.logger.debug("#handleMessage: ", message);
     switch (message.action) {
-      case "emoji-search":
-        try {
-          let searchUrl = this.urlBase + message.data;
-          if (this.dialog) {
-            this.dialog.startLoading();
-          }
-          this.previewUrl(new URL(searchUrl), message.point);
-          return;
-        } catch (e) {
-          this.logger.log("Error creating url: ", e);
-        }
-        break;
-      case "loaded-and-cleaned":
-        // TODO: Reset to actual URL in case of internal navigation within iframe.
-        // this.url = new URL(message.href);
-        this.dialog?.show();
-        this.dialog?.stopLoading();
-        break;
-      case "loaded-and-no-def":
-        // TODO: If verbose-define, show NO definition found.
-        this.dialog?.close();
+      case "render-emojis":
+        this.renderEmojis(
+          message.data.title,
+          message.data.emojis,
+          message.point
+        );
         break;
       case "escape":
         this.dialog?.close();
@@ -52,50 +38,76 @@ export class WinboxRenderer {
     }
   }
 
-  async previewUrl(url: URL, point?: DOMRect) {
-    this.logger.log("#previewUrl: ", url);
-    const winboxOptions = await this.getWinboxOptions(url, point);
+  async renderEmojis(title: string, emojis: any[], point?: DOMRect) {
+    this.logger.log("#renderEmojis: ", title, emojis, point);
+    const list = document.createElement("ul");
+    list.style.display = "flex";
+
+    emojis.forEach((e) => {
+      const el = document.createElement("li");
+      el.innerHTML = e.emoji;
+      el.style.margin = "5px";
+      el.style.fontSize = "20px";
+      list.appendChild(el);
+    });
+    const winboxOptions = await this.getWinboxOptions(list, point);
 
     if (!this.dialog) {
-      this.logger.debug("creating new dialog with options", winboxOptions);
-      this.dialog = new WinBox(
-        chrome.i18n.getMessage("appName"),
-        winboxOptions,
-      );
+      this.logger.debug("Creating new dialog with options", winboxOptions);
+      this.dialog = new WinBox(i18n(title), winboxOptions);
+      // this.dialog.mount(list);
     } else {
-      this.logger.debug("restoring dialog");
-      // TODO: Also reset html to ensure load is fired.
-      this.dialog.setUrl(url.href);
+      this.logger.debug("Restoring dialog");
       this.dialog.move(
         winboxOptions.x,
         winboxOptions.y,
-        /* skipUpdate= */ false,
+        /* skipUpdate= */ false
       );
+      this.dialog.setTitle(i18n(title));
+      this.dialog.mount(list);
     }
+
+    this.dialog.addControl({
+      index: 2,
+      class: "wb-open material-symbols-outlined",
+      title: "Help",
+      image: "",
+      click: (event, winbox) => {
+        this.logger.debug("#openOptions");
+        chrome.runtime.sendMessage("open_options_page");
+      },
+    });
   }
 
-  async getWinboxOptions(url: URL, point?: DOMRect) {
+  async getWinboxOptions(markup: HTMLElement, point?: DOMRect) {
     let pos = { x: 0, y: 0, placement: "top" };
     if (point) {
       pos = await this.getPos(point!);
     }
     return {
-      icon: chrome.runtime.getURL("assets/logo-24x24.png"),
+      icon: "",
       x: pos.x,
       y: pos.y,
-      header: 0.0001, // 0 would be ignored as falsy.
+      header: 20,
+      background: "white",
+      color: "black",
       width: "300px",
-      height: "30px",
+      height: "50px",
       autosize: false,
-      class: ["no-max", "no-full", "no-min", "no-resize", "no-move"],
+      class: [
+        "no-max",
+        "no-close",
+        "no-full",
+        "no-min",
+        "no-resize",
+        "no-move",
+      ],
       index: await this.getMaxZIndex(),
       // Simply updating the url without changing the iframe, means the content-script doesn't get re-inserted into the frame, even though it's now out of context.
-      html: `<iframe name="${this.iframeName}" src="${url}"></iframe><div class="loading"><span class="bar-animation"></span></div> `,
-      // url: url.href, // Update restore when you update this.
+      mount: markup,
       hidden: false,
       shadowel: "smart-emoji-keyboard-window",
-      cssurl: chrome.runtime.getURL("content-script/winbox.css"),
-      framename: this.iframeName,
+      cssurl: chrome.runtime.getURL("content-script/winbox-extended.css"),
 
       onclose: () => {
         this.dialog = undefined;
@@ -110,9 +122,9 @@ export class WinboxRenderer {
     return new Promise((resolve: (arg0: number) => void) => {
       const z = Math.max(
         ...Array.from(document.querySelectorAll("body *"), (el) =>
-          parseFloat(window.getComputedStyle(el).zIndex),
+          parseFloat(window.getComputedStyle(el).zIndex)
         ).filter((zIndex) => !Number.isNaN(zIndex)),
-        0,
+        0
       );
       resolve(z);
     });
@@ -127,7 +139,7 @@ export class WinboxRenderer {
     const div = document.createElement("div");
     // These dimensions need to match that of the dialog precisely.
     div.style.width = "300px";
-    div.style.height = "30px";
+    div.style.height = "50px";
     div.style.position = "fixed";
     div.style.visibility = "hidden";
     document.body.appendChild(div);

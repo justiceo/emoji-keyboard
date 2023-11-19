@@ -1,6 +1,3 @@
-/* @import url("../../../node_modules/bootstrap/dist/css/bootstrap.css"); */
-/* @import url("../../../node_modules/bootstrap-icons/font/bootstrap-icons.min.css"); */
-
 /* Material symbols outlined - https://fonts.google.com/icons  */
 @font-face {
   font-family: "Material Symbols Outlined";
@@ -24,6 +21,7 @@
   -webkit-font-feature-settings: "liga";
   -webkit-font-smoothing: antialiased;
 }
+
 /* Winbox CSS */
 .winbox {
   position: fixed;

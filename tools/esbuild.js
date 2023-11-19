@@ -132,6 +132,7 @@ class Build {
           "src/popup/popup.ts",
           "src/standalone/emoji.ts",
           "src/options-page/options.js",
+          "src/utils/settings/settings.ts",
           "src/utils/winbox/winbox.js",
         ],
         bundle: true,
@@ -327,6 +328,8 @@ class Build {
       "src/popup/popup.html": "popup/popup.html",
       "src/content-script/content-script.css":
         "content-script/content-script.css",
+      "src/content-script/winbox-extended.css":
+        "content-script/winbox-extended.css",
       "src/options-page/options.html": "options-page/options.html",
       "src/welcome": "welcome",
       "src/standalone/emoji.html": "standalone/emoji.html",
