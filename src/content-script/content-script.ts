@@ -12,11 +12,14 @@ class ContentScript {
   logger = new Logger(this);
   winboxRenderer = new WinboxRenderer();
   isFloatieActive = false;
+  query = "";
 
   init() {
-    if (this.inIframe()) {
+    if (this.inApplicationIframe()) {
+    } else if (this.inAnyIframe()) {
       // todo: run iframe helper
     } else {
+      // Add event listeners for main window.
       window.addEventListener("message", this.onMessageHandler, false);
       document.onkeydown = this.winboxRenderer.onEscHandler;
       document.onscroll = this.winboxRenderer.onEscHandler;
@@ -69,12 +72,13 @@ class ContentScript {
   };
 
   maybeUpdateSuggestions = (e) => {
+    this.query += e.key;
     if (this.isFloatieActive) {
       this.logger.log("suggestions updated", e);
       window.postMessage({
         application: "emoji-keyboard",
         action: "emoji-search",
-        data: e.key,
+        data: this.query,
         point: e.target.getBoundingClientRect(),
       });
     }
@@ -83,6 +87,7 @@ class ContentScript {
   maybeCloseFloatie = (e) => {
     if (this.isFloatieActive) {
       this.isFloatieActive = false;
+      this.query = "";
       this.logger.log("floatie deactivated", e);
     }
   };
@@ -129,11 +134,19 @@ class ContentScript {
    * Returns true if this script is running inside an iframe,
    * since the content script is added to all frames.
    */
-  inIframe() {
+  inAnyIframe() {
     try {
       return window.self !== window.top;
     } catch (e) {
       return true;
+    }
+  }
+
+  inApplicationIframe() {
+    try {
+      return window.name === manifest.__package_name + "/mainframe";
+    } catch (e) {
+      return false;
     }
   }
 }
