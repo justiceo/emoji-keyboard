@@ -707,7 +707,10 @@ export class WinBox {
       node.onclick = function (event) {
         click.call(this, event, self);
       };
-    if (title) node.title = title;
+    if (title) {
+      node.title = title;
+      node.innerHTML = title.toLowerCase();
+    }
 
     icons.insertBefore(node, icons.childNodes[index || 0]);
 
