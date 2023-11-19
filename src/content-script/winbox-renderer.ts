@@ -155,14 +155,14 @@ export class WinboxRenderer {
         return rect;
       },
     };
-    const div = document.createElement("div");
+    const placeholder = document.createElement("div");
     // These dimensions need to match that of the dialog precisely.
-    div.style.width = "310px";
-    div.style.height = "50px";
-    div.style.position = "fixed";
-    div.style.visibility = "hidden";
-    document.body.appendChild(div);
-    return computePosition(virtualEl, div, {
+    placeholder.style.width = "310px";
+    placeholder.style.height = "50px";
+    placeholder.style.position = "fixed";
+    placeholder.style.visibility = "hidden";
+    document.body.appendChild(placeholder);
+    return computePosition(virtualEl, placeholder, {
       placement: "top",
       strategy: "fixed", // If you use "fixed", x, y would change to clientX/Y.
       middleware: [
@@ -171,6 +171,7 @@ export class WinboxRenderer {
         shift({ padding: 5 }), // Space from the edge of the browser.
       ],
     }).then(({ x, y, placement, middlewareData }) => {
+      placeholder.remove();
       return {
         x: x,
         y: y,
