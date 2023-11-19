@@ -25,12 +25,6 @@ export class WinboxRenderer {
           message.point
         );
         break;
-      case "emoji-hover":
-        // todo: display emoji title;
-        break;
-      case "emoji-click":
-        // todo: display "copied" notice
-        break;
       case "escape":
         this.dialog?.close();
         break;
@@ -43,21 +37,44 @@ export class WinboxRenderer {
   async renderEmojis(title: string, emojis: any[], point?: DOMRect) {
     this.logger.log("#renderEmojis: ", title, emojis, point);
     const list = document.createElement("ul");
-    list.style.display = "flex";
+    list.classList.add("emoji-list");
 
-    emojis.forEach((e) => {
+    emojis.forEach((emoji) => {
       const el = document.createElement("li");
-      el.innerHTML = e.emoji;
-      el.style.margin = "5px";
-      el.style.fontSize = "20px";
+      el.innerHTML = emoji.emoji;
+      el.addEventListener("mouseover", (e) => {
+        this.logger.debug("hovered on ", emoji.description[0]);
+
+        this.dialog!.dom.querySelector(".wb-notice").classList.remove('success', "hidden");
+        this.dialog!.dom.querySelector(".wb-notice").innerHTML = ":" + emoji.description[0];
+      });
+      el.addEventListener("click", (e) => {
+        this.logger.debug("clicked on ", emoji.description[0]);
+        navigator.clipboard.writeText(emoji.emoji);
+        this.dialog!.dom.querySelector(".wb-notice").classList.add('success');
+        this.dialog!.dom.querySelector(".wb-notice").innerHTML = "copied to clipboard!";
+      });
       list.appendChild(el);
+    });
+
+    list.addEventListener("mouseleave", e => {
+      this.dialog!.dom.querySelector(".wb-notice").innerHTML = "";
+      this.dialog!.dom.querySelector(".wb-notice").classList.remove('success');
+      this.dialog!.dom.querySelector(".wb-notice").classList.add('hidden');
     });
     const winboxOptions = await this.getWinboxOptions(list, point);
 
     if (!this.dialog) {
       this.logger.debug("Creating new dialog with options", winboxOptions);
       this.dialog = new WinBox(i18n(title), winboxOptions);
-      // this.dialog.mount(list);
+      const notice = document.createElement("span");
+      notice.classList.add("wb-notice", "hidden");
+      const header = this.dialog.dom.querySelector(".wb-header") as HTMLElement;
+      if (header) {
+        header.insertBefore(notice, header.lastChild)
+      } else {
+        this.logger.warn("Couldn't find header to insert notice into.");
+      }
     } else {
       this.logger.debug("Restoring dialog");
       this.dialog.move(
@@ -93,7 +110,7 @@ export class WinboxRenderer {
       header: 20,
       background: "white",
       color: "black",
-      width: "300px",
+      width: "320px",
       height: "50px",
       autosize: false,
       class: [
@@ -140,7 +157,7 @@ export class WinboxRenderer {
     };
     const div = document.createElement("div");
     // These dimensions need to match that of the dialog precisely.
-    div.style.width = "300px";
+    div.style.width = "310px";
     div.style.height = "50px";
     div.style.position = "fixed";
     div.style.visibility = "hidden";

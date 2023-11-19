@@ -1,10 +1,51 @@
+.hidden {
+  display:none;
+}
 .wb-title {
   font-size: 10px;
   text-transform: lowercase;
 }
+.wb-drag {
+  display: inline-block;
+}
+.wb-notice {
+  float: right;
+  background: lightgoldenrodyellow;
+  margin-top: 5px;
+  margin-right: 0;
+  padding: 0 5px;
+  border-radius: 3px;
+  line-height: 14px;
+  font-size: 10px;
+}
+.wb-notice.success {
+  background: lightgreen;
+}
 .wb-control {
   margin-top: 4px;
 }
+.wb-control:hover {
+  color: blue;
+}
 .material-symbols-outlined {
   font-size: 16px;
+}
+
+.emoji-list {
+  display: flex;
+}
+.emoji-list li {
+  list-style: none;
+  padding: 5px;
+  font-size: 20px;
+  border: 1px solid transparent;
+  border-radius: 3px;
+}
+.emoji-list li:hover {
+  cursor: pointer;
+  background-color: aliceblue;
+  border: 1px solid lightskyblue;
+}
+.emoji-list li:active {
+  background-color: lightskyblue;
 }
