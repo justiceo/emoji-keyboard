@@ -6,7 +6,8 @@
  * https://github.com/nextapps-de/winbox
  */
 
-import { markup, winboxcss } from "./template.js";
+import "./winbox.css";
+import template from "./template.txt.html";
 import {
   addListener,
   removeListener,
@@ -80,6 +81,7 @@ export class WinBox {
       hidden,
       modal,
       background,
+      color,
       border,
       header,
       classname,
@@ -141,6 +143,7 @@ export class WinBox {
         right = params["right"];
 
         background = params["background"];
+        color = params["color"];
         border = params["border"];
         header = params["header"];
         classname = params["class"];
@@ -180,6 +183,10 @@ export class WinBox {
 
     if (background) {
       this.setBackground(background);
+    }
+
+    if (color) {
+      this.setColor(color);
     }
 
     if (border) {
@@ -308,8 +315,9 @@ export class WinBox {
       se.style.position = "absolute";
 
       // Add winbox css
-      const style = document.createElement("style");
-      style.textContent = winboxcss;
+      const style = document.createElement("link");
+      style.rel = "stylesheet";
+      style.href = chrome.runtime.getURL("utils/winbox/winbox.css");
       se.appendChild(style);
 
       // Add externally provided css
@@ -387,6 +395,15 @@ export class WinBox {
    */
   setBackground(background) {
     setStyle(this.dom, "background", background);
+    return this;
+  }
+  /**
+   * @this WinBox
+   */
+  setColor(color) {
+    setStyle(this.dom, "color", color);
+    const headerNode = getByClass(this.dom, "wb-header");
+    setStyle(headerNode, "color", color);
     return this;
   }
   /**
@@ -1120,6 +1137,12 @@ function cancel_fullscreen() {
     document[prefix_exit]();
     return true;
   }
+}
+
+function markup(tpl) {
+  const parsedTemplate = document.createElement("div");
+  parsedTemplate.innerHTML = template;
+  return (tpl || parsedTemplate).cloneNode(true);
 }
 
 /*

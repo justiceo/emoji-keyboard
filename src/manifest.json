@@ -44,6 +44,10 @@
       "matches": ["<all_urls>"]
     },
     {
+      "resources": ["utils/winbox/winbox.css"],
+      "matches": ["<all_urls>"]
+    },
+    {
       "resources": ["standalone/emoji.html"],
       "matches": ["<all_urls>"]
     }
