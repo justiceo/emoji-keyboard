@@ -33,11 +33,13 @@
 
 .emoji-list {
   display: flex;
+  flex-wrap: wrap;
 }
 .emoji-list li {
   list-style: none;
   padding: 5px;
   font-size: 20px;
+  width: 20px; /* some emojis are smaller than others */
   border: 1px solid transparent;
   border-radius: 3px;
 }
