@@ -330,6 +330,7 @@ class Build {
         "content-script/content-script.css",
       "src/content-script/winbox-extended.css":
         "content-script/winbox-extended.css",
+      "src/content-script/demo.html": "content-script/demo.html",
       "src/options-page/options.html": "options-page/options.html",
       "src/welcome": "welcome",
       "src/standalone/emoji.html": "standalone/emoji.html",
