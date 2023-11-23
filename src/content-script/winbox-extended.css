@@ -1,5 +1,5 @@
-.hidden {
-  display:none;
+.winbox .hidden {
+  display: none;
 }
 .wb-title {
   font-size: 10px;
@@ -27,21 +27,28 @@
 .wb-control:hover {
   color: blue;
 }
-.material-symbols-outlined {
+.winbox .material-symbols-outlined {
   font-size: 16px;
 }
 
 .emoji-list {
   display: flex;
   flex-wrap: wrap;
+  padding: 0;
+  margin: 0;
 }
 .emoji-list li {
   list-style: none;
-  padding: 5px;
+  /* some emojis maybe rendered smaller than others */
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  padding: 0 0 0 0;
+  margin: 0 0 0 0;
   font-size: 20px;
-  width: 20px; /* some emojis are smaller than others */
   border: 1px solid transparent;
   border-radius: 3px;
+  text-align: center;
 }
 .emoji-list li:hover {
   cursor: pointer;
