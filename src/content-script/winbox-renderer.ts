@@ -2,6 +2,8 @@ import { Logger } from "../utils/logger";
 import { WinBox } from "../utils/winbox/winbox";
 import { computePosition, flip, offset, shift } from "@floating-ui/dom";
 import { i18n } from "../utils/i18n";
+import Storage from "../utils/storage";
+import { CLICKED_EMOJIS } from "../utils/storage-keys";
 
 export class WinboxRenderer {
   logger = new Logger(this);
@@ -19,7 +21,7 @@ export class WinboxRenderer {
     this.logger.debug("#handleMessage: ", message);
     switch (message.action) {
       case "render-emojis":
-        this.renderEmojis(
+        await this.renderEmojis(
           message.data.title,
           message.data.emojis,
           message.point
@@ -43,25 +45,35 @@ export class WinboxRenderer {
       const el = document.createElement("li");
       el.innerHTML = emoji.emoji;
       el.addEventListener("mouseover", (e) => {
-        this.logger.debug("hovered on ", emoji.description[0]);
-
-        this.dialog!.dom.querySelector(".wb-notice").classList.remove('success', "hidden");
-        const truncate = (input) => input.length > 31 ? `${input.substring(0, 28)}...` : input;
-        this.dialog!.dom.querySelector(".wb-notice").innerHTML = ":" + truncate(emoji.description[0]);
+        this.dialog!.dom.querySelector(".wb-notice").classList.remove(
+          "success",
+          "hidden"
+        );
+        const truncate = (input) =>
+          input.length > 31 ? `${input.substring(0, 28)}...` : input;
+        this.dialog!.dom.querySelector(".wb-notice").innerHTML =
+          ":" + truncate(emoji.description[0]);
       });
       el.addEventListener("click", (e) => {
-        this.logger.debug("clicked on ", emoji.description[0]);
         navigator.clipboard.writeText(emoji.emoji);
-        this.dialog!.dom.querySelector(".wb-notice").classList.add('success');
-        this.dialog!.dom.querySelector(".wb-notice").innerHTML = "copied to clipboard!";
+        Storage.getAndUpdate(CLICKED_EMOJIS, (clickedEmojis) => {
+          clickedEmojis[emoji] = {
+            lastInteraction: Date.now(),
+            count: clickedEmojis[emoji]?.count + 1 || 1,
+          };
+          return clickedEmojis;
+        });
+        this.dialog!.dom.querySelector(".wb-notice").classList.add("success");
+        this.dialog!.dom.querySelector(".wb-notice").innerHTML =
+          "copied to clipboard!";
       });
       list.appendChild(el);
     });
 
-    list.addEventListener("mouseleave", e => {
+    list.addEventListener("mouseleave", (e) => {
       this.dialog!.dom.querySelector(".wb-notice").innerHTML = "";
-      this.dialog!.dom.querySelector(".wb-notice").classList.remove('success');
-      this.dialog!.dom.querySelector(".wb-notice").classList.add('hidden');
+      this.dialog!.dom.querySelector(".wb-notice").classList.remove("success");
+      this.dialog!.dom.querySelector(".wb-notice").classList.add("hidden");
     });
     const winboxOptions = await this.getWinboxOptions(list, point);
 
@@ -72,7 +84,7 @@ export class WinboxRenderer {
       notice.classList.add("wb-notice", "hidden");
       const header = this.dialog.dom.querySelector(".wb-header") as HTMLElement;
       if (header) {
-        header.insertBefore(notice, header.lastChild)
+        header.insertBefore(notice, header.lastChild);
       } else {
         this.logger.warn("Couldn't find header to insert notice into.");
       }
