@@ -41,6 +41,10 @@ export class WinboxRenderer {
     const list = document.createElement("ul");
     list.classList.add("emoji-list");
 
+    if (!emojis) {
+      this.logger.debug("No emojis to render");
+      return;
+    }
     emojis.forEach((emoji) => {
       const el = document.createElement("li");
       el.innerHTML = emoji.emoji;
@@ -52,7 +56,7 @@ export class WinboxRenderer {
         const truncate = (input) =>
           input.length > 31 ? `${input.substring(0, 28)}...` : input;
         this.dialog!.dom.querySelector(".wb-notice").innerHTML =
-          ":" + truncate(emoji.description[0]);
+          ":" + truncate(emoji.description);
       });
       el.addEventListener("click", (e) => {
         navigator.clipboard.writeText(emoji.emoji);
@@ -80,6 +84,8 @@ export class WinboxRenderer {
     if (!this.dialog) {
       this.logger.debug("Creating new dialog with options", winboxOptions);
       this.dialog = new WinBox(i18n(title), winboxOptions);
+
+      // Insert notice into header.
       const notice = document.createElement("span");
       notice.classList.add("wb-notice", "hidden");
       const header = this.dialog.dom.querySelector(".wb-header") as HTMLElement;
@@ -88,6 +94,18 @@ export class WinboxRenderer {
       } else {
         this.logger.warn("Couldn't find header to insert notice into.");
       }
+
+      // Add help buttons.
+      this.dialog.addControl({
+        index: 2,
+        class: "wb-open material-symbols-outlined",
+        title: "Help",
+        image: "",
+        click: (event, winbox) => {
+          this.logger.debug("#openOptions");
+          chrome.runtime.sendMessage("open_options_page");
+        },
+      });
     } else {
       this.logger.debug("Restoring dialog");
       this.dialog.move(
@@ -98,17 +116,6 @@ export class WinboxRenderer {
       this.dialog.setTitle(i18n(title));
       this.dialog.mount(list);
     }
-
-    this.dialog.addControl({
-      index: 2,
-      class: "wb-open material-symbols-outlined",
-      title: "Help",
-      image: "",
-      click: (event, winbox) => {
-        this.logger.debug("#openOptions");
-        chrome.runtime.sendMessage("open_options_page");
-      },
-    });
   }
 
   async getWinboxOptions(markup: HTMLElement, point?: DOMRect) {
@@ -142,6 +149,7 @@ export class WinboxRenderer {
       cssurl: chrome.runtime.getURL("content-script/winbox-extended.css"),
 
       onclose: () => {
+        this.logger.debug("onclose");
         this.dialog = undefined;
         document
           .querySelectorAll("smart-emoji-keyboard-window")

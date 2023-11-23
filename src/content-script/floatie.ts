@@ -17,6 +17,7 @@ export class Floatie {
   // Listening for changes on input elements has the drawback
   // that we have to keep checking the DOM for newly added inputs.
   keyListenerForEmoji = (event) => {
+    // TODO: Handle contentEditable elements (e.g. instagram)
     if (
       event.target?.nodeName !== "INPUT" &&
       event.target?.nodeName !== "TEXTAREA"
@@ -60,6 +61,8 @@ export class Floatie {
     } else if (e.key == "Tab") {
     } else if (e.key === "Enter") {
       // also character
+    } else if (e.key === "Escape") {
+      this.maybeCloseFloatie(e);
     }
   };
 
@@ -126,6 +129,11 @@ export class Floatie {
       this.isFloatieActive = false;
       this.query = "";
       this.logger.log("floatie deactivated", e);
+      this.renderer({
+        application: "emoji-keyboard",
+        action: "escape",
+        point: e.target.getBoundingClientRect(),
+      });
     }
   }
 

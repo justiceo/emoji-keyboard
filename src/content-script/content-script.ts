@@ -2,7 +2,7 @@ import "./content-script.css";
 import { Logger } from "../utils/logger";
 import { WinboxRenderer } from "./winbox-renderer";
 import manifest from "../manifest.json";
-import { Floatie } from "../standalone/floatie";
+import { Floatie } from "./floatie";
 import "./set-up-emojis";
 
 // Listen for ":" keydown
@@ -18,11 +18,9 @@ class ContentScript {
 
   init() {
     if (this.inApplicationIframe()) {
-    } else if (this.inAnyIframe()) {
     } else {
       // Add event listeners for main window.
       window.addEventListener("message", this.onMessageHandler, false);
-      document.onkeydown = this.winboxRenderer.onEscHandler;
       document.onscroll = this.winboxRenderer.onEscHandler;
       document.onresize = this.winboxRenderer.onEscHandler;
 
