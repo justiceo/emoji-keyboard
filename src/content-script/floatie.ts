@@ -1,6 +1,7 @@
 import { Logger } from "../utils/logger";
 import Storage from "../utils/storage";
 import { CLICKED_EMOJIS } from "../utils/storage-keys";
+import emojiList from "../standalone/emoji-list.json";
 
 export class Floatie {
   query = "";
@@ -162,6 +163,10 @@ export class Floatie {
 
   searchEmojis(query: string, context: string, recentEmojis) {
     // TODO: Filter recentEmojis and emoji bank for context.
-    return recentEmojis;
+    // search for each word in emojiList
+    const results = emojiList.filter((emoji) =>
+      emoji.alternatesStr.includes(query)
+    );
+    return results;
   }
 }
