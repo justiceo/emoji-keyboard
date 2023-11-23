@@ -1,14 +1,14 @@
 {
-  "appName": {
-    "message": "لوحة المفاتيح الرموز التعبيرية",
-    "description": "The name of the extension"
-  },
-  "appShortName": {
-    "message": "لوحة المفاتيح الرموز التعبيرية",
-    "description": "The short-version name of the extension name"
-  },
-  "appDesc": {
-    "message": "استخدام الرموز التعبيرية في أي مكان على الويب!",
-    "description": "The description of your extension"
-  }
+    "appName": {
+        "message": "لوحة مفاتيح الرموز التعبيرية الذكية",
+        "description": "The name of the extension"
+    },
+    "appShortName": {
+        "message": "لوحة المفاتيح الرموز التعبيرية",
+        "description": "The short-version name of the extension name"
+    },
+    "appDesc": {
+        "message": "البحث وإدراج الرموز التعبيرية في النصوص عن طريق الكتابة \":\"",
+        "description": "The description of your extension"
+    }
 }

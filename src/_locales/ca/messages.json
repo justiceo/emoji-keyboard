@@ -1,14 +1,14 @@
 {
-  "appName": {
-    "message": "Teclat emoji",
-    "description": "The name of the extension"
-  },
-  "appShortName": {
-    "message": "Teclat emoji",
-    "description": "The short-version name of the extension name"
-  },
-  "appDesc": {
-    "message": "Utilitzeu els emojis a qualsevol lloc del web!",
-    "description": "The description of your extension"
-  }
+    "appName": {
+        "message": "Teclat emoji intel·ligent",
+        "description": "The name of the extension"
+    },
+    "appShortName": {
+        "message": "Teclat emoji",
+        "description": "The short-version name of the extension name"
+    },
+    "appDesc": {
+        "message": "Cerqueu i inseriu emojis en textos escrivint \":\"",
+        "description": "The description of your extension"
+    }
 }

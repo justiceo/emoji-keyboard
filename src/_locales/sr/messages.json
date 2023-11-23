@@ -1,14 +1,14 @@
 {
-  "appName": {
-    "message": "Емоји тастатура",
-    "description": "The name of the extension"
-  },
-  "appShortName": {
-    "message": "Емоји тастатура",
-    "description": "The short-version name of the extension name"
-  },
-  "appDesc": {
-    "message": "Користите Емојис било где на вебу!",
-    "description": "The description of your extension"
-  }
+    "appName": {
+        "message": "Смарт Емоји тастатура",
+        "description": "The name of the extension"
+    },
+    "appShortName": {
+        "message": "Емоји тастатура",
+        "description": "The short-version name of the extension name"
+    },
+    "appDesc": {
+        "message": "Претражите и уметните Емојис у текстовима куцањем ':'",
+        "description": "The description of your extension"
+    }
 }

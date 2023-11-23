@@ -1,14 +1,14 @@
 {
-  "appName": {
-    "message": "Emoji -näppäimistö",
-    "description": "The name of the extension"
-  },
-  "appShortName": {
-    "message": "Emoji -näppäimistö",
-    "description": "The short-version name of the extension name"
-  },
-  "appDesc": {
-    "message": "Käytä hymiöitä missä tahansa verkossa!",
-    "description": "The description of your extension"
-  }
+    "appName": {
+        "message": "Älykäs hymiönäppäimistö",
+        "description": "The name of the extension"
+    },
+    "appShortName": {
+        "message": "Emoji -näppäimistö",
+        "description": "The short-version name of the extension name"
+    },
+    "appDesc": {
+        "message": "Etsi ja lisää hymiöt teksteihin kirjoittamalla ':'",
+        "description": "The description of your extension"
+    }
 }

@@ -1,14 +1,14 @@
 {
-  "appName": {
-    "message": "Clavier emoji",
-    "description": "The name of the extension"
-  },
-  "appShortName": {
-    "message": "Clavier emoji",
-    "description": "The short-version name of the extension name"
-  },
-  "appDesc": {
-    "message": "Utilisez des emojis n'importe où sur le Web!",
-    "description": "The description of your extension"
-  }
+    "appName": {
+        "message": "Clavier Emoji intelligent",
+        "description": "The name of the extension"
+    },
+    "appShortName": {
+        "message": "Clavier emoji",
+        "description": "The short-version name of the extension name"
+    },
+    "appDesc": {
+        "message": "Recherche et insérer des emojis dans les textes en tapant ':'",
+        "description": "The description of your extension"
+    }
 }

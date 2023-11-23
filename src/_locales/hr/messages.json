@@ -1,14 +1,14 @@
 {
-  "appName": {
-    "message": "Emoji tipkovnica",
-    "description": "The name of the extension"
-  },
-  "appShortName": {
-    "message": "Emoji tipkovnica",
-    "description": "The short-version name of the extension name"
-  },
-  "appDesc": {
-    "message": "Koristite emojije bilo gdje na webu!",
-    "description": "The description of your extension"
-  }
+    "appName": {
+        "message": "Pametna emoji tipkovnica",
+        "description": "The name of the extension"
+    },
+    "appShortName": {
+        "message": "Emoji tipkovnica",
+        "description": "The short-version name of the extension name"
+    },
+    "appDesc": {
+        "message": "Pretražite i umetnite emojis u tekstove tipkanjem ':'",
+        "description": "The description of your extension"
+    }
 }

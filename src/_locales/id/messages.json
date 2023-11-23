@@ -1,14 +1,14 @@
 {
-  "appName": {
-    "message": "Keyboard Emoji",
-    "description": "The name of the extension"
-  },
-  "appShortName": {
-    "message": "Keyboard Emoji",
-    "description": "The short-version name of the extension name"
-  },
-  "appDesc": {
-    "message": "Gunakan emoji di mana saja di web!",
-    "description": "The description of your extension"
-  }
+    "appName": {
+        "message": "Keyboard emoji pintar",
+        "description": "The name of the extension"
+    },
+    "appShortName": {
+        "message": "Keyboard Emoji",
+        "description": "The short-version name of the extension name"
+    },
+    "appDesc": {
+        "message": "Cari dan masukkan emoji ke dalam teks dengan mengetik ':'",
+        "description": "The description of your extension"
+    }
 }

@@ -1,14 +1,14 @@
 {
-  "appName": {
-    "message": "ইমোজি কীবোর্ড",
-    "description": "The name of the extension"
-  },
-  "appShortName": {
-    "message": "ইমোজি কীবোর্ড",
-    "description": "The short-version name of the extension name"
-  },
-  "appDesc": {
-    "message": "ওয়েবে যে কোনও জায়গায় ইমোজিস ব্যবহার করুন!",
-    "description": "The description of your extension"
-  }
+    "appName": {
+        "message": "স্মার্ট ইমোজি কীবোর্ড",
+        "description": "The name of the extension"
+    },
+    "appShortName": {
+        "message": "ইমোজি কীবোর্ড",
+        "description": "The short-version name of the extension name"
+    },
+    "appDesc": {
+        "message": "টাইপ করে পাঠ্যগুলিতে ইমোজিগুলি অনুসন্ধান করুন এবং সন্নিবেশ করুন ':'",
+        "description": "The description of your extension"
+    }
 }

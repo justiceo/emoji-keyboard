@@ -1,14 +1,14 @@
 {
-  "appName": {
-    "message": "Emoji -Tastatur",
-    "description": "The name of the extension"
-  },
-  "appShortName": {
-    "message": "Emoji -Tastatur",
-    "description": "The short-version name of the extension name"
-  },
-  "appDesc": {
-    "message": "Verwenden Sie Emojis überall im Web!",
-    "description": "The description of your extension"
-  }
+    "appName": {
+        "message": "Smart Emoji -Tastatur",
+        "description": "The name of the extension"
+    },
+    "appShortName": {
+        "message": "Emoji -Tastatur",
+        "description": "The short-version name of the extension name"
+    },
+    "appDesc": {
+        "message": "Suchen und fügen Sie Emojis in Texte ein und fügen Sie ein, indem Sie eingeben \": '",
+        "description": "The description of your extension"
+    }
 }

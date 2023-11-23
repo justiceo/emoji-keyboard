@@ -1,14 +1,14 @@
 {
-  "appName": {
-    "message": "Klávesnice emodži",
-    "description": "The name of the extension"
-  },
-  "appShortName": {
-    "message": "Klávesnice emodži",
-    "description": "The short-version name of the extension name"
-  },
-  "appDesc": {
-    "message": "Použijte emodži kdekoli na webu!",
-    "description": "The description of your extension"
-  }
+    "appName": {
+        "message": "Inteligentní klávesnice Emoji",
+        "description": "The name of the extension"
+    },
+    "appShortName": {
+        "message": "Klávesnice emodži",
+        "description": "The short-version name of the extension name"
+    },
+    "appDesc": {
+        "message": "Vyhledejte a vložte emodži do textů zadáním ':'",
+        "description": "The description of your extension"
+    }
 }

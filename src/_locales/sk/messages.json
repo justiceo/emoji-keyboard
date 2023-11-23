@@ -1,14 +1,14 @@
 {
-  "appName": {
-    "message": "Emitská klávesnica",
-    "description": "The name of the extension"
-  },
-  "appShortName": {
-    "message": "Emitská klávesnica",
-    "description": "The short-version name of the extension name"
-  },
-  "appDesc": {
-    "message": "Používajte emodži kdekoľvek na webe!",
-    "description": "The description of your extension"
-  }
+    "appName": {
+        "message": "Klávesnica inteligentnej emodži",
+        "description": "The name of the extension"
+    },
+    "appShortName": {
+        "message": "Emitská klávesnica",
+        "description": "The short-version name of the extension name"
+    },
+    "appDesc": {
+        "message": "Vyhľadajte a vložte emodži do textov zadaním ':'",
+        "description": "The description of your extension"
+    }
 }

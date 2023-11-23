@@ -1,14 +1,14 @@
 {
-  "appName": {
-    "message": "Tastiera emoji",
-    "description": "The name of the extension"
-  },
-  "appShortName": {
-    "message": "Tastiera emoji",
-    "description": "The short-version name of the extension name"
-  },
-  "appDesc": {
-    "message": "Usa gli emoji ovunque sul web!",
-    "description": "The description of your extension"
-  }
+    "appName": {
+        "message": "Tastiera emoji intelligente",
+        "description": "The name of the extension"
+    },
+    "appShortName": {
+        "message": "Tastiera emoji",
+        "description": "The short-version name of the extension name"
+    },
+    "appDesc": {
+        "message": "Cerca e inserisci gli emoji nei testi digitando \":\"",
+        "description": "The description of your extension"
+    }
 }
