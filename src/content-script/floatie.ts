@@ -7,6 +7,7 @@ export class Floatie {
   query = "";
   isFloatieActive = false;
   logger = new Logger("Floatie");
+  lastMousePosition?: DOMRect;
 
   renderer = (msg) => {
     // Anyone can override this handler.
@@ -44,6 +45,7 @@ export class Floatie {
     } else if (event.key === " ") {
       this.maybeCloseFloatie(event);
     } else {
+      this.query += event.key;
       this.maybeUpdateSuggestion(event);
     }
   };
@@ -53,9 +55,19 @@ export class Floatie {
     // Handle enter character (insert emoji)
     // Handle tab character (insert emoji)
 
-    if (e.key === "Backspace") {
+    this.lastMousePosition = {
+      width: 300,
+      height: 50,
+      x: e.x,
+      y: e.y,
+      left: e.x,
+      top: e.y,
+    } as DOMRect;
+
+    if (e.key === "Backspace" && this.isFloatieActive) {
       // todo: delete button? No
       this.query = this.query.slice(0, this.query.length - 1);
+      this.maybeUpdateSuggestion(e);
       // todo: If context no longer contains :, clear query
     } else if (e.key in ["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"]) {
       // Handle arrow keys (change selected emoji)? FYI: User might be navigating the input field.
@@ -102,12 +114,6 @@ export class Floatie {
   }
 
   async maybeUpdateSuggestion(e) {
-    if (e.key === "Enter") {
-      // maybe insert emoji
-    } else {
-      this.query += e.key;
-    }
-
     const context = e.target.value.slice(0, e.target.selectionStart).trim();
     const emojiHistory = await Storage.get(CLICKED_EMOJIS);
     const matchingEmojis = this.searchEmojis(this.query, context, emojiHistory);

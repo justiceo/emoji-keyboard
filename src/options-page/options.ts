@@ -4,9 +4,9 @@ import "./options.css";
 
 const configOptions: Config[] = [
   {
-    id: "Hide Recents",
+    id: "hide-recents",
     type: "switch",
-    title: "hide-recents",
+    title: "Hide Recents",
     description: "Do not show the most recently used emojis upon invocation.",
     default_value: false,
   },
