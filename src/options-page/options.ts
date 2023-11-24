@@ -2,22 +2,28 @@ import "../content-script/content-script"; // To inject popup for dev mode.
 import { Config, SettingsUI } from "../utils/settings/settings";
 import "./options.css";
 
-
 const configOptions: Config[] = [
+  {
+    id: "Hide Recents",
+    type: "switch",
+    title: "hide-recents",
+    description: "Do not show the most recently used emojis upon invocation.",
+    default_value: false,
+  },
   {
     id: "previewr-width",
     type: "range",
-    title: "Preview Width (%)",
-    description: "The width of the preview panel relative to the page.",
-    default_value: 320,
-    min: "160",
-    max: "480",
-    step: "32",
+    title: "Emojis per row",
+    description: "The number of emojis to show per row.",
+    default_value: 10,
+    min: "6",
+    max: "15",
+    step: "1",
   },
   {
     id: "previewr-height",
     type: "range",
-    title: "Emoji rows",
+    title: "Number of rows",
     description: "The number of emoji rows to show.",
     default_value: 1,
     min: "1",
@@ -33,7 +39,6 @@ const configOptions: Config[] = [
   },
 ];
 
-
 document.addEventListener("DOMContentLoaded", () => {
   document
     .querySelector(".options-container")
@@ -42,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelector("#show-preview")?.addEventListener("click", () => {
     window.postMessage(
       { application: "emoji-keyboard", action: "render-emojis" },
-      window.location.origin,
+      window.location.origin
     );
   });
 });
