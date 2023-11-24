@@ -61,6 +61,13 @@
     "service_worker": "background-script/background.js",
     "__firefox__persistent": "false"
   },
+  "commands": {
+    "_execute_action": {
+      "suggested_key": "Ctrl+Shift+Q",
+      "description": "Invoke Emoji Keyboard",
+      "global": true
+    }
+  },
   "__firefox__key": "",
   "__firefox__browser_specific_settings": {
     "gecko": {
