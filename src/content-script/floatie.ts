@@ -115,11 +115,34 @@ export class Floatie {
   }
 
   async maybeUpdateSuggestion(e) {
-    const context = e.target.value.slice(0, e.target.selectionStart).trim();
+    const context: string = e.target.value
+      .slice(0, e.target.selectionStart)
+      .trim();
     const emojiHistory = await Storage.get(CLICKED_EMOJIS);
     this.matchingEmojis = this.searchEmojis(this.query, context, emojiHistory);
 
-    if (this.isFloatieActive) {
+    if (!context.includes(":") || context.length === 0) {
+      // TODO: narrow down to string in front.
+      // regex match context for : and any word characters till the end of the string.
+      this.logger.debug(
+        "matcher value: ",
+        context.match(/:\w+$/),
+        "for context:",
+        context
+      );
+      this.maybeCloseFloatie(e);
+      return;
+    }
+    if (!this.isFloatieActive) {
+      this.maybeCloseFloatie(e);
+      return;
+    }
+
+    // Mark the first emoji as selected.
+    if (this.matchingEmojis.length > 0) {
+      this.matchingEmojis[0].selected = true;
+    }
+
       this.renderer({
         application: "emoji-keyboard",
         action: "render-emojis",
@@ -129,7 +152,6 @@ export class Floatie {
         },
         point: e.target.getBoundingClientRect(),
       });
-    }
   }
 
   maybeCloseFloatie(e) {
