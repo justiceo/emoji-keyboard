@@ -1,5 +1,6 @@
 import "./content-script.css";
 import { Logger } from "../utils/logger";
+import Storage from "../utils/storage";
 import { WinboxRenderer } from "./winbox-renderer";
 import manifest from "../manifest.json";
 import { Floatie } from "./floatie";
@@ -72,4 +73,9 @@ class ContentScript {
     }
   }
 }
+
+Storage.get("blocked-sites").then((sites) => {
+  if (!sites.includes(window.location.hostname)) {
 new ContentScript().init();
+  }
+});
