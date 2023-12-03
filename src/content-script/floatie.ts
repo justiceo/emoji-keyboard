@@ -8,6 +8,7 @@ export class Floatie {
   isFloatieActive = false;
   logger = new Logger("Floatie");
   lastMousePosition?: DOMRect;
+  matchingEmojis: any[] = [];
 
   renderer = (msg) => {
     // Anyone can override this handler.
@@ -82,7 +83,7 @@ export class Floatie {
   async maybeActivateFloatie(e) {
     this.isFloatieActive = true;
     const context = e.target.value.slice(0, e.target.selectionStart).trim();
-    const emojiHistory = await Storage.get(CLICKED_EMOJIS);
+    this.matchingEmojis = await Storage.get(CLICKED_EMOJIS);
 
     // TODO: If there is no space prior, ignore.
     // Unless the prior character is an emoji :)
@@ -94,13 +95,13 @@ export class Floatie {
         action: "render-emojis",
         data: {
           title: "Recents ⏰",
-          emojis: emojiHistory,
+          emojis: this.matchingEmojis,
         },
         point: e.target.getBoundingClientRect(),
       });
     } else {
       // Display suggestions based on context.
-      const suggestedEmojis = this.suggestEmojis(context, emojiHistory);
+      const suggestedEmojis = this.suggestEmojis(context, this.matchingEmojis);
       this.renderer({
         application: "emoji-keyboard",
         action: "render-emojis",
@@ -116,7 +117,7 @@ export class Floatie {
   async maybeUpdateSuggestion(e) {
     const context = e.target.value.slice(0, e.target.selectionStart).trim();
     const emojiHistory = await Storage.get(CLICKED_EMOJIS);
-    const matchingEmojis = this.searchEmojis(this.query, context, emojiHistory);
+    this.matchingEmojis = this.searchEmojis(this.query, context, emojiHistory);
 
     if (this.isFloatieActive) {
       this.renderer({
@@ -124,7 +125,7 @@ export class Floatie {
         action: "render-emojis",
         data: {
           title: "Results 🔎",
-          emojis: matchingEmojis,
+        emojis: this.matchingEmojis,
         },
         point: e.target.getBoundingClientRect(),
       });
@@ -135,6 +136,7 @@ export class Floatie {
     if (this.isFloatieActive) {
       this.isFloatieActive = false;
       this.query = "";
+      this.matchingEmojis = [];
       this.logger.log("floatie deactivated", e);
       this.renderer({
         application: "emoji-keyboard",
