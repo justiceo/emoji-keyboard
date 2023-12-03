@@ -27,7 +27,8 @@ class ContentScript {
 
       // Unlike keydown, keypress is not raised by noncharacter keys.
       window.addEventListener("keypress", this.floatie.keyListenerForEmoji);
-      window.addEventListener("keydown", this.floatie.metaListenerForEmoji);
+      // keyup is better than keydown here because we want to evaluate the input field after the character has been added/removed.
+      window.addEventListener("keyup", this.floatie.metaListenerForEmoji);
 
       this.floatie.renderer = (msg) => this.winboxRenderer.handleMessage(msg);
     }
@@ -76,6 +77,6 @@ class ContentScript {
 
 Storage.get("blocked-sites").then((sites) => {
   if (!sites.includes(window.location.hostname)) {
-new ContentScript().init();
+    new ContentScript().init();
   }
 });
