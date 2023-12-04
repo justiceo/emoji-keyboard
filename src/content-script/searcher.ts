@@ -11,6 +11,7 @@ export class Searcher {
     cache: true,
     id: "emoji",
     index: ["alternates"],
+    suggest: true,
   });
   logger = new Logger(this);
 
@@ -30,7 +31,8 @@ export class Searcher {
       bool: "or",
     });
     if (resultIndices.length === 0) {
-      return [];
+      // perform a strict search including ":" prefix
+      return this.strictSearch(query);
     }
 
     this.logger.debug("Search result indices:", resultIndices);
@@ -40,5 +42,13 @@ export class Searcher {
 
     this.logger.debug("Search results:", matchingEmojis);
     return matchingEmojis;
+  }
+
+  strictSearch(query: string) {
+    return emojiList.filter(
+      (emoji) =>
+        emoji.alternates.includes(":" + query) ||
+        emoji.alternates.includes(query)
+    );
   }
 }

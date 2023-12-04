@@ -39,12 +39,12 @@ export class Floatie {
       return;
     }
 
-    this.logger.debug("#keyListenerForEmoji handling key:", event.key);
+    this.logger.debug("#keypress:", event.key);
     if (event.key === ":") {
       this.maybeActivateFloatie(event);
-    } else if (event.key === " ") {
+    } else if (event.key === " " && this.isFloatieActive) {
       this.maybeCloseFloatie(event);
-    } else {
+    } else if (this.isFloatieActive) {
       this.query += event.key;
       this.maybeUpdateSuggestion(event);
     }
