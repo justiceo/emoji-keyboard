@@ -34,6 +34,7 @@ class ContentScript {
 
       this.floatie.renderer = (msg) => this.winboxRenderer.handleMessage(msg);
       this.floatie.searchHandler = (query) => this.searcher.search(query);
+      this.floatie.suggestHandler = (query) => this.searcher.suggest(query);
     }
   }
 

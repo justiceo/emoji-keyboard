@@ -166,7 +166,7 @@ export class Floatie {
       });
     } else {
       // Display suggestions based on context.
-      const suggestedEmojis = this.suggestEmojis(context, this.matchingEmojis);
+      const suggestedEmojis = this.suggestHandler(context, this.matchingEmojis);
       this.renderer({
         application: "emoji-keyboard",
         action: "render-emojis",
@@ -233,26 +233,7 @@ export class Floatie {
     }
   }
 
-  // TODO: implement.
-  updateSuggestions = (e) => {
-    const input = e.target;
-    const caretPos = input.selectionStart;
-    const context = input.value.slice(0, caretPos);
-    const colonIndex = context.indexOf(":");
-    const pretext = context.slice(0, colonIndex);
-    const query = context.slice(colonIndex + 1, caretPos);
-
-    if (colonIndex === -1) {
-      // the caret is behind the trigger, return no suggestion
-      this.logger.log("No suggestions: out of context");
-      return;
-    }
-    if (context.length > 0) {
-    }
-  };
-
-  suggestEmojis(context: string, recentEmojis) {
-    // TODO: Filter recentEmojis and emoji bank for context.
+  suggestHandler(context: string, recentEmojis) {
     return recentEmojis;
   }
 
