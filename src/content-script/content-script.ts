@@ -26,9 +26,9 @@ class ContentScript {
       document.onresize = this.winboxRenderer.onEscHandler;
 
       // Unlike keydown, keypress is not raised by noncharacter keys.
-      window.addEventListener("keypress", this.floatie.keyListenerForEmoji);
-      // keyup is better than keydown here because we want to evaluate the input field after the character has been added/removed.
-      window.addEventListener("keyup", this.floatie.metaListenerForEmoji);
+      window.addEventListener("keypress", this.floatie.keypressListener);
+      window.addEventListener("keyup", this.floatie.keyupHandler);
+      window.addEventListener("keydown", this.floatie.keydownHandler);
 
       this.floatie.renderer = (msg) => this.winboxRenderer.handleMessage(msg);
     }

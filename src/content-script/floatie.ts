@@ -16,10 +16,9 @@ export class Floatie {
     window.postMessage(msg);
   };
 
-  // Listen for all keypress events and scan for input types.
-  // Listening for changes on input elements has the drawback
-  // that we have to keep checking the DOM for newly added inputs.
-  keyListenerForEmoji = (event) => {
+  // Keypress event is only raised by character keys on input-like elements.
+  // This listener operates (is bound) at the window level, not element level.
+  keypressListener = (event) => {
     // TODO: Handle contentEditable elements (e.g. instagram)
     if (
       event.target?.nodeName !== "INPUT" &&
@@ -51,11 +50,8 @@ export class Floatie {
     }
   };
 
-  metaListenerForEmoji = (e) => {
-    // TODO: Handle backspace character (remove last character from query)
-    // Handle enter character (insert emoji)
-    // Handle tab character (insert emoji)
-
+  // Ideal for intercepting events that we want to handle instead of the input (e.g. arrow keys)
+  keydownHandler = (e) => {
     this.lastMousePosition = {
       width: 300,
       height: 50,
@@ -65,16 +61,85 @@ export class Floatie {
       top: e.y,
     } as DOMRect;
 
+    if (!this.isFloatieActive) {
+      return;
+    }
+
+    if (["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"].includes(e.key)) {
+      e.preventDefault();
+      // Handle arrow keys (change selected emoji)? FYI: User might be navigating the input field.
+      let selectedEmojiIndex = this.matchingEmojis.findIndex((e) => e.selected);
+      switch (e.key) {
+        case "ArrowLeft":
+          selectedEmojiIndex--;
+          break;
+        case "ArrowRight":
+          selectedEmojiIndex++;
+          break;
+        case "ArrowUp":
+          // Do nothing for now?? since we are shooting for a single row.
+          break;
+        case "ArrowDown":
+          break;
+      }
+      if (selectedEmojiIndex < 0) {
+        selectedEmojiIndex = this.matchingEmojis.length - 1;
+      } else if (selectedEmojiIndex >= this.matchingEmojis.length) {
+        selectedEmojiIndex = 0;
+      }
+      this.matchingEmojis.forEach((e) => (e.selected = false));
+      this.matchingEmojis[selectedEmojiIndex].selected = true;
+      this.renderer({
+        application: "emoji-keyboard",
+        action: "render-emojis",
+        data: {
+          title: "Results 🔎",
+          emojis: this.matchingEmojis,
+          selected: selectedEmojiIndex,
+        },
+        point: this.lastMousePosition,
+      });
+    } else if (e.key == "Tab" || e.key === "Enter") {
+      e.preventDefault();
+      // Todo: fix for contenteditable later.
+      // insert last selected emoji.
+      const selectedEmoji = this.matchingEmojis.find((e) => e.selected);
+      if (selectedEmoji) {
+        const input = e.target;
+        const caretPos = input.selectionStart;
+        const context = input.value.slice(0, caretPos);
+        const colonIndex = context.lastIndexOf(":");
+        const pretext = context.slice(0, colonIndex);
+        const posttext = context.slice(caretPos, context.length);
+        const emoji = selectedEmoji.emoji;
+        const newContext = pretext + emoji + posttext;
+        input.value = newContext;
+        input.selectionStart = caretPos + emoji.length - 1;
+        input.selectionEnd = caretPos + emoji.length - 1;
+        this.maybeCloseFloatie(e);
+      }
+    }
+  };
+
+  // Ideal for observing events that we don't mind modifying the input element (e.g. backspace)
+  keyupHandler = (e) => {
+    this.lastMousePosition = {
+      width: 300,
+      height: 50,
+      x: e.x,
+      y: e.y,
+      left: e.x,
+      top: e.y,
+    } as DOMRect;
+
+    if (!this.isFloatieActive) {
+      return;
+    }
+
     if (e.key === "Backspace" && this.isFloatieActive) {
       // todo: delete button? No
       this.query = this.query.slice(0, this.query.length - 1);
       this.maybeUpdateSuggestion(e);
-      // todo: If context no longer contains :, clear query
-    } else if (e.key in ["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"]) {
-      // Handle arrow keys (change selected emoji)? FYI: User might be navigating the input field.
-    } else if (e.key == "Tab") {
-    } else if (e.key === "Enter") {
-      // also character
     } else if (e.key === "Escape") {
       this.maybeCloseFloatie(e);
     }
@@ -143,15 +208,15 @@ export class Floatie {
       this.matchingEmojis[0].selected = true;
     }
 
-      this.renderer({
-        application: "emoji-keyboard",
-        action: "render-emojis",
-        data: {
-          title: "Results 🔎",
+    this.renderer({
+      application: "emoji-keyboard",
+      action: "render-emojis",
+      data: {
+        title: "Results 🔎",
         emojis: this.matchingEmojis,
-        },
-        point: e.target.getBoundingClientRect(),
-      });
+      },
+      point: e.target.getBoundingClientRect(),
+    });
   }
 
   maybeCloseFloatie(e) {
