@@ -184,7 +184,7 @@ export class Floatie {
       .slice(0, e.target.selectionStart)
       .trim();
     const emojiHistory = await Storage.get(CLICKED_EMOJIS);
-    this.matchingEmojis = this.searchEmojis(this.query, context, emojiHistory);
+    this.matchingEmojis = this.searchHandler(this.query, context, emojiHistory);
 
     if (!context.includes(":") || context.length === 0) {
       // TODO: narrow down to string in front.
@@ -256,12 +256,10 @@ export class Floatie {
     return recentEmojis;
   }
 
-  searchEmojis(query: string, context: string, recentEmojis) {
-    // TODO: Filter recentEmojis and emoji bank for context.
-    // search for each word in emojiList
+  searchHandler = (query: string, context: string, recentEmojis) => {
     const results = emojiList.filter((emoji) =>
       emoji.alternatesStr.includes(query)
     );
     return results;
-  }
+  };
 }

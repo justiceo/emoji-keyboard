@@ -4,6 +4,7 @@ import Storage from "../utils/storage";
 import { WinboxRenderer } from "./winbox-renderer";
 import manifest from "../manifest.json";
 import { Floatie } from "./floatie";
+import { Searcher } from "./searcher";
 import "./set-up-emojis";
 
 // Listen for ":" keydown
@@ -14,6 +15,7 @@ class ContentScript {
   logger = new Logger(this);
   winboxRenderer = new WinboxRenderer();
   floatie = new Floatie();
+  searcher = new Searcher();
   isFloatieActive = false;
   query = "";
 
@@ -31,6 +33,7 @@ class ContentScript {
       window.addEventListener("keydown", this.floatie.keydownHandler);
 
       this.floatie.renderer = (msg) => this.winboxRenderer.handleMessage(msg);
+      this.floatie.searchHandler = (query) => this.searcher.search(query);
     }
   }
 
