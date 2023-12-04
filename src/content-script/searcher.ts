@@ -7,6 +7,7 @@ export class Searcher {
     preset: "score",
     tokenize: "full",
     charset: "latin:advanced",
+    resolution: 9,
     cache: true,
     id: "emoji",
     index: ["alternates"],
@@ -32,6 +33,7 @@ export class Searcher {
       return [];
     }
 
+    this.logger.debug("Search result indices:", resultIndices);
     const matchingEmojis = resultIndices[0].result.map((r) =>
       emojiList.find((e) => e.emoji === r)
     );
