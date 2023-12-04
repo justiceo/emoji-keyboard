@@ -95,7 +95,6 @@ export class Floatie {
         data: {
           title: "Results 🔎",
           emojis: this.matchingEmojis,
-          selected: selectedEmojiIndex,
         },
         point: this.lastMousePosition,
       });
@@ -155,6 +154,7 @@ export class Floatie {
     // This is non-trivial - https://stackoverflow.com/a/39425959
 
     if (context.length === 0) {
+      this.selectTheFirstEmoji();
       this.renderer({
         application: "emoji-keyboard",
         action: "render-emojis",
@@ -166,13 +166,14 @@ export class Floatie {
       });
     } else {
       // Display suggestions based on context.
-      const suggestedEmojis = this.suggestHandler(context, this.matchingEmojis);
+      this.matchingEmojis = this.suggestHandler(context, this.matchingEmojis);
+      this.selectTheFirstEmoji();
       this.renderer({
         application: "emoji-keyboard",
         action: "render-emojis",
         data: {
           title: "Suggestions ✨",
-          emojis: suggestedEmojis,
+          emojis: this.matchingEmojis,
         },
         point: e.target.getBoundingClientRect(),
       });
@@ -203,11 +204,7 @@ export class Floatie {
       return;
     }
 
-    // Mark the first emoji as selected.
-    if (this.matchingEmojis.length > 0) {
-      this.matchingEmojis[0].selected = true;
-    }
-
+    this.selectTheFirstEmoji();
     this.renderer({
       application: "emoji-keyboard",
       action: "render-emojis",
@@ -217,6 +214,13 @@ export class Floatie {
       },
       point: e.target.getBoundingClientRect(),
     });
+  }
+
+  selectTheFirstEmoji() {
+    this.matchingEmojis.forEach((e) => (e.selected = false));
+    if (this.matchingEmojis.length > 0) {
+      this.matchingEmojis[0].selected = true;
+    }
   }
 
   maybeCloseFloatie(e) {

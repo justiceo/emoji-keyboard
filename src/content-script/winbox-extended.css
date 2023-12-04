@@ -50,7 +50,8 @@
   border-radius: 3px;
   text-align: center;
 }
-.emoji-list li:hover {
+.emoji-list li:hover,
+.emoji-list li.selected {
   cursor: pointer;
   background-color: aliceblue;
   border: 1px solid lightskyblue;

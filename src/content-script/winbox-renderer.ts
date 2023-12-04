@@ -71,6 +71,10 @@ export class WinboxRenderer {
         this.dialog!.dom.querySelector(".wb-notice").innerHTML =
           "copied to clipboard!";
       });
+
+      if (emoji.selected) {
+        el.classList.add("selected");
+      }
       list.appendChild(el);
     });
 
