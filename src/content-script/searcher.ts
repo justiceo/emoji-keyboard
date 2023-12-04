@@ -23,10 +23,10 @@ export class Searcher {
     findAllMatches: false,
     minMatchCharLength: 1,
     location: 0,
-    threshold: 0.6,
-    distance: 100,
+    threshold: 0.3,
+    distance: 20,
     useExtendedSearch: false,
-    ignoreLocation: true,
+    ignoreLocation: false,
     ignoreFieldNorm: true,
     fieldNormWeight: 1,
   });
@@ -79,6 +79,7 @@ export class Searcher {
   suggest(query: string) {}
 
   strictSearch(query: string) {
+    this.logger.debug("Strict searching for:", query);
     return emojiList.filter(
       (emoji) =>
         emoji.alternates.includes(":" + query) ||
