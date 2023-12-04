@@ -1,4 +1,5 @@
 import Document from "flexsearch/src/document";
+import Fuse from "fuse.js";
 import emojiList from "../standalone/emoji-list.json";
 import { Logger } from "../utils/logger";
 
@@ -12,6 +13,22 @@ export class Searcher {
     id: "emoji",
     index: ["alternates"],
     suggest: true,
+  });
+  fuse = new Fuse(emojiList, {
+    keys: ["alternates"],
+    isCaseSensitive: false,
+    includeScore: true,
+    shouldSort: true,
+    includeMatches: false,
+    findAllMatches: false,
+    minMatchCharLength: 1,
+    location: 0,
+    threshold: 0.6,
+    distance: 100,
+    useExtendedSearch: false,
+    ignoreLocation: true,
+    ignoreFieldNorm: true,
+    fieldNormWeight: 1,
   });
   logger = new Logger(this);
 
@@ -31,8 +48,8 @@ export class Searcher {
       bool: "or",
     });
     if (resultIndices.length === 0) {
-      // perform a strict search including ":" prefix
-      return this.strictSearch(query);
+      // perform a fuzzy search instead.
+      return this.fuzzySearch(query);
     }
 
     this.logger.debug("Search result indices:", resultIndices);
@@ -43,6 +60,23 @@ export class Searcher {
     this.logger.debug("Search results:", matchingEmojis);
     return matchingEmojis;
   }
+
+  fuzzySearch(query: string) {
+    this.logger.debug("Fuzzy searching for:", query);
+
+    const result = this.fuse.search(query);
+    if (result.length === 0) {
+      // perform a strict search including ":" prefix
+      return this.strictSearch(query);
+    }
+    this.logger.debug("Fuzzy search results:", result);
+
+    const emojis = result.map((r) => r.item);
+    this.logger.debug("Matching fuzzy emojis:", emojis);
+    return emojis;
+  }
+
+  suggest(query: string) {}
 
   strictSearch(query: string) {
     return emojiList.filter(

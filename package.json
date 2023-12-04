@@ -47,6 +47,7 @@
     "@sentry/browser": "^7.36.0",
     "@webcomponents/custom-elements": "^1.5.1",
     "bootstrap": "^5.3.2",
-    "flexsearch": "^0.7.31"
+    "flexsearch": "^0.7.31",
+    "fuse.js": "^7.0.0"
   }
 }
