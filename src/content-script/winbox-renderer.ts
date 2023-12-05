@@ -135,7 +135,7 @@ export class WinboxRenderer {
       background: "white",
       color: "black",
       width: "320px", // step is 32px
-      height: "113px", // 20px+ row is 31px, 3 => 96px
+      height: "82px", // 20px+ row is 31px, 2 => 62px
       autosize: false,
       class: [
         "no-max",
@@ -183,7 +183,7 @@ export class WinboxRenderer {
     const placeholder = document.createElement("div");
     // These dimensions need to match that of the dialog precisely.
     placeholder.style.width = "310px";
-    placeholder.style.height = "113px";
+    placeholder.style.height = "82px";
     placeholder.style.position = "fixed";
     placeholder.style.visibility = "hidden";
     document.body.appendChild(placeholder);
