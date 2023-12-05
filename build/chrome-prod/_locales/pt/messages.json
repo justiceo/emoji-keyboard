@@ -1,6 +1,6 @@
 {
     "appName": {
-        "message": "Teclado emoji",
+        "message": "Teclado emoji inteligente",
         "description": "The name of the extension"
     },
     "appShortName": {
@@ -8,7 +8,7 @@
         "description": "The short-version name of the extension name"
     },
     "appDesc": {
-        "message": "Use emojis em qualquer lugar da web!",
+        "message": "Pesquise e insira emojis nos textos digitando ':'",
         "description": "The description of your extension"
     }
 }

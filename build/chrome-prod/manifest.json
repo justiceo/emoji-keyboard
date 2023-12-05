@@ -11,7 +11,8 @@
         "contextMenus",
         "storage",
         "cookies",
-        "tabs"
+        "tabs",
+        "activeTab"
     ],
     "host_permissions": [
         "*://*/*"
@@ -46,6 +47,7 @@
         "48": "assets/logo-48x48.png",
         "128": "assets/logo-128x128.png"
     },
+    "options_page": "options-page/options.html",
     "web_accessible_resources": [
         {
             "resources": [
@@ -54,9 +56,40 @@
             "matches": [
                 "<all_urls>"
             ]
+        },
+        {
+            "resources": [
+                "content-script/winbox-extended.css"
+            ],
+            "matches": [
+                "<all_urls>"
+            ]
+        },
+        {
+            "resources": [
+                "utils/winbox/winbox.css"
+            ],
+            "matches": [
+                "<all_urls>"
+            ]
+        },
+        {
+            "resources": [
+                "standalone/emoji.html"
+            ],
+            "matches": [
+                "<all_urls>"
+            ]
         }
     ],
     "background": {
         "service_worker": "background-script/background.js"
+    },
+    "commands": {
+        "_execute_action": {
+            "suggested_key": "Ctrl+Shift+Q",
+            "description": "Invoke Emoji Keyboard",
+            "global": true
+        }
     }
 }

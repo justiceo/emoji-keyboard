@@ -1,6 +1,6 @@
 {
     "appName": {
-        "message": "لوحة المفاتيح الرموز التعبيرية",
+        "message": "لوحة مفاتيح الرموز التعبيرية الذكية",
         "description": "The name of the extension"
     },
     "appShortName": {
@@ -8,7 +8,7 @@
         "description": "The short-version name of the extension name"
     },
     "appDesc": {
-        "message": "استخدام الرموز التعبيرية في أي مكان على الويب!",
+        "message": "البحث وإدراج الرموز التعبيرية في النصوص عن طريق الكتابة \":\"",
         "description": "The description of your extension"
     }
 }

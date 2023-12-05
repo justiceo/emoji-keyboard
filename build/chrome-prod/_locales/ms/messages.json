@@ -1,6 +1,6 @@
 {
     "appName": {
-        "message": "Papan kekunci emoji",
+        "message": "Papan kekunci emoji pintar",
         "description": "The name of the extension"
     },
     "appShortName": {
@@ -8,7 +8,7 @@
         "description": "The short-version name of the extension name"
     },
     "appDesc": {
-        "message": "Gunakan emojis di mana sahaja di web!",
+        "message": "Cari dan masukkan emojis dalam teks dengan menaip ':'",
         "description": "The description of your extension"
     }
 }

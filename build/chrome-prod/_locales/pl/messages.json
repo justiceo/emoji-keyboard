@@ -1,6 +1,6 @@
 {
     "appName": {
-        "message": "Klawiatura emoji",
+        "message": "Inteligentna klawiatura emoji",
         "description": "The name of the extension"
     },
     "appShortName": {
@@ -8,7 +8,7 @@
         "description": "The short-version name of the extension name"
     },
     "appDesc": {
-        "message": "Używaj emoji w dowolnym miejscu w Internecie!",
+        "message": "Wyszukaj i wstaw emoji w tekstach, wpisując „:”",
         "description": "The description of your extension"
     }
 }

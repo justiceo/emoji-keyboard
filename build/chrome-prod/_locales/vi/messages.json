@@ -1,6 +1,6 @@
 {
     "appName": {
-        "message": "Bàn phím biểu tượng cảm xúc",
+        "message": "Bàn phím biểu tượng cảm xúc thông minh",
         "description": "The name of the extension"
     },
     "appShortName": {
@@ -8,7 +8,7 @@
         "description": "The short-version name of the extension name"
     },
     "appDesc": {
-        "message": "Sử dụng biểu tượng cảm xúc ở bất cứ đâu trên web!",
+        "message": "Tìm kiếm và chèn biểu tượng cảm xúc vào các văn bản bằng cách gõ ':'",
         "description": "The description of your extension"
     }
 }

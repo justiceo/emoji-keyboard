@@ -1,6 +1,6 @@
 {
     "appName": {
-        "message": "Kibodi ya Emoji",
+        "message": "Kibodi ya smart emoji",
         "description": "The name of the extension"
     },
     "appShortName": {
@@ -8,7 +8,7 @@
         "description": "The short-version name of the extension name"
     },
     "appDesc": {
-        "message": "Tumia emojis mahali popote kwenye wavuti!",
+        "message": "Tafuta na ingiza emojis katika maandishi kwa kuandika ':'",
         "description": "The description of your extension"
     }
 }

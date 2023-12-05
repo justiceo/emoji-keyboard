@@ -1,6 +1,6 @@
 {
     "appName": {
-        "message": "Emoji -tastatur",
+        "message": "Smart emoji -tastatur",
         "description": "The name of the extension"
     },
     "appShortName": {
@@ -8,7 +8,7 @@
         "description": "The short-version name of the extension name"
     },
     "appDesc": {
-        "message": "Bruk emojier hvor som helst på nettet!",
+        "message": "Søk og sett inn emojis i tekster ved å skrive ':'",
         "description": "The description of your extension"
     }
 }

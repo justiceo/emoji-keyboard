@@ -1,6 +1,6 @@
 {
     "appName": {
-        "message": "絵文字キーボード",
+        "message": "スマート絵文字キーボード",
         "description": "The name of the extension"
     },
     "appShortName": {
@@ -8,7 +8,7 @@
         "description": "The short-version name of the extension name"
     },
     "appDesc": {
-        "message": "ウェブ上のどこでも絵文字を使用してください！",
+        "message": "'：'と入力して、テキストに絵文字を検索して挿入します",
         "description": "The description of your extension"
     }
 }

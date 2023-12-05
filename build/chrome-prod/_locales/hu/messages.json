@@ -1,6 +1,6 @@
 {
     "appName": {
-        "message": "Hangulatjel -billentyűzet",
+        "message": "Okos hangulatjelek billentyűzete",
         "description": "The name of the extension"
     },
     "appShortName": {
@@ -8,7 +8,7 @@
         "description": "The short-version name of the extension name"
     },
     "appDesc": {
-        "message": "Használjon hangulatjeleket bárhol az interneten!",
+        "message": "Keressen és illesszen be hangulatjeleket a szövegekbe: ':': '",
         "description": "The description of your extension"
     }
 }

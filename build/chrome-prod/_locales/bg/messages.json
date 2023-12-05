@@ -1,6 +1,6 @@
 {
     "appName": {
-        "message": "Клавиатура на емоджи",
+        "message": "Умна клавиатура на емоджи",
         "description": "The name of the extension"
     },
     "appShortName": {
@@ -8,7 +8,7 @@
         "description": "The short-version name of the extension name"
     },
     "appDesc": {
-        "message": "Използвайте емоджи навсякъде в мрежата!",
+        "message": "Търсете и вмъкнете емоджи в текстове, като въведете ':'",
         "description": "The description of your extension"
     }
 }

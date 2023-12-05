@@ -1,6 +1,6 @@
 {
     "appName": {
-        "message": "表情符号键盘",
+        "message": "智能表情符号键盘",
         "description": "The name of the extension"
     },
     "appShortName": {
@@ -8,7 +8,7 @@
         "description": "The short-version name of the extension name"
     },
     "appDesc": {
-        "message": "在网络上的任何地方使用表情符号！",
+        "message": "通过键入“：”搜索和插入表情符号在文本中",
         "description": "The description of your extension"
     }
 }

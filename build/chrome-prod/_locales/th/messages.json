@@ -1,6 +1,6 @@
 {
     "appName": {
-        "message": "คีย์บอร์ดอีโมจิ",
+        "message": "คีย์บอร์ดอิโมจิอัจฉริยะ",
         "description": "The name of the extension"
     },
     "appShortName": {
@@ -8,7 +8,7 @@
         "description": "The short-version name of the extension name"
     },
     "appDesc": {
-        "message": "ใช้อิโมจิทุกที่บนเว็บ!",
+        "message": "ค้นหาและแทรกอีโมจิในข้อความโดยพิมพ์ ':'",
         "description": "The description of your extension"
     }
 }

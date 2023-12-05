@@ -1,6 +1,6 @@
 {
     "appName": {
-        "message": "Emotikonide klaviatuur",
+        "message": "Nutikas emotikonide klaviatuur",
         "description": "The name of the extension"
     },
     "appShortName": {
@@ -8,7 +8,7 @@
         "description": "The short-version name of the extension name"
     },
     "appDesc": {
-        "message": "Kasutage emotikone kõikjal veebis!",
+        "message": "Otsige ja sisestage emotikonid tekstides, kirjutades ':'",
         "description": "The description of your extension"
     }
 }

@@ -1,6 +1,6 @@
 {
     "appName": {
-        "message": "Tipkovnica emoji",
+        "message": "Pametna tipkovnica Emoji",
         "description": "The name of the extension"
     },
     "appShortName": {
@@ -8,7 +8,7 @@
         "description": "The short-version name of the extension name"
     },
     "appDesc": {
-        "message": "Uporabite emojije kjer koli na spletu!",
+        "message": "Iščite in vstavite emojije v besedila tako, da tipkate ':'",
         "description": "The description of your extension"
     }
 }

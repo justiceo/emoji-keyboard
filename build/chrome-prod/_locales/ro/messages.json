@@ -1,6 +1,6 @@
 {
     "appName": {
-        "message": "Tastatură emoji",
+        "message": "Tastatură emoji inteligentă",
         "description": "The name of the extension"
     },
     "appShortName": {
@@ -8,7 +8,7 @@
         "description": "The short-version name of the extension name"
     },
     "appDesc": {
-        "message": "Utilizați emoji oriunde pe web!",
+        "message": "Căutați și introduceți emoji în texte tastând ':'",
         "description": "The description of your extension"
     }
 }

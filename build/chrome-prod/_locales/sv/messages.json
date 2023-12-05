@@ -1,6 +1,6 @@
 {
     "appName": {
-        "message": "Emoji -tangentbord",
+        "message": "Smart emoji -tangentbord",
         "description": "The name of the extension"
     },
     "appShortName": {
@@ -8,7 +8,7 @@
         "description": "The short-version name of the extension name"
     },
     "appDesc": {
-        "message": "Använd emojis var som helst på webben!",
+        "message": "Sök och infoga emojis i texter genom att skriva ':'",
         "description": "The description of your extension"
     }
 }

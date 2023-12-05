@@ -1,6 +1,6 @@
 {
     "appName": {
-        "message": "Emoji tastatūra",
+        "message": "Gudra emocijzīmju tastatūra",
         "description": "The name of the extension"
     },
     "appShortName": {
@@ -8,7 +8,7 @@
         "description": "The short-version name of the extension name"
     },
     "appDesc": {
-        "message": "Izmantojiet emocijzīmes jebkur tīmeklī!",
+        "message": "Meklēt un ievietot emocijas tekstos, ierakstot ':'",
         "description": "The description of your extension"
     }
 }

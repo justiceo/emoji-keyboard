@@ -1,6 +1,6 @@
 {
     "appName": {
-        "message": "이모티콘 키보드",
+        "message": "스마트 이모티콘 키보드",
         "description": "The name of the extension"
     },
     "appShortName": {
@@ -8,7 +8,7 @@
         "description": "The short-version name of the extension name"
     },
     "appDesc": {
-        "message": "웹의 어느 곳에서나 이모티콘을 사용하십시오!",
+        "message": "':'타이핑하여 텍스트에 이모티콘을 검색하고 삽입하십시오.",
         "description": "The description of your extension"
     }
 }

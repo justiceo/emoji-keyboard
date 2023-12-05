@@ -1,6 +1,6 @@
 {
     "appName": {
-        "message": "Clavier emoji",
+        "message": "Clavier Emoji intelligent",
         "description": "The name of the extension"
     },
     "appShortName": {
@@ -8,7 +8,7 @@
         "description": "The short-version name of the extension name"
     },
     "appDesc": {
-        "message": "Utilisez des emojis n'importe où sur le Web!",
+        "message": "Recherche et insérer des emojis dans les textes en tapant ':'",
         "description": "The description of your extension"
     }
 }

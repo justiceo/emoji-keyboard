@@ -1,0 +1,67 @@
+smart-emoji-keyboard-window {
+  /* nesting works but import must be top-level */
+  /* also you'll need to move this file from "copy" to "entryPoint" during the build step to use imports */
+  /* @import url("../../node_modules/bootstrap/dist/css/bootstrap.css"); */
+
+  .winbox .hidden {
+    display: none;
+  }
+  .wb-title {
+    font-size: 10px;
+    text-transform: lowercase;
+  }
+  .wb-drag {
+    display: inline-block;
+  }
+  .wb-notice {
+    float: right;
+    background: lightgoldenrodyellow;
+    margin-top: 5px;
+    margin-right: 0;
+    padding: 0 5px;
+    border-radius: 3px;
+    line-height: 14px;
+    font-size: 10px;
+  }
+  .wb-notice.success {
+    background: lightgreen;
+  }
+  .wb-control {
+    margin-top: 4px;
+  }
+  .wb-control:hover {
+    color: blue;
+  }
+  .winbox .material-symbols-outlined {
+    font-size: 16px;
+  }
+
+  .emoji-list {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: 0;
+  }
+  .emoji-list li {
+    list-style: none;
+    /* some emojis maybe rendered smaller than others */
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 0 0 0;
+    margin: 0 0 0 0;
+    font-size: 20px;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    text-align: center;
+  }
+  .emoji-list li:hover,
+  .emoji-list li.selected {
+    cursor: pointer;
+    background-color: aliceblue;
+    border: 1px solid lightskyblue;
+  }
+  .emoji-list li:active {
+    background-color: lightskyblue;
+  }
+}
