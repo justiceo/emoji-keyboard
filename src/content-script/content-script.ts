@@ -31,6 +31,7 @@ class ContentScript {
       window.addEventListener("keypress", this.floatie.keypressListener);
       window.addEventListener("keyup", this.floatie.keyupHandler);
       window.addEventListener("keydown", this.floatie.keydownHandler);
+      document.addEventListener("click", this.floatie.clickHandler);
 
       this.floatie.renderer = (msg) => this.winboxRenderer.handleMessage(msg);
       this.floatie.searchHandler = (query) => this.searcher.search(query);

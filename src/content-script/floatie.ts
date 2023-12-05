@@ -8,12 +8,39 @@ export class Floatie {
   isFloatieActive = false;
   logger = new Logger("Floatie");
   lastMousePosition?: DOMRect;
+  lastInput: HTMLInputElement | null;
   matchingEmojis: any[] = [];
 
   renderer = (msg) => {
     // Anyone can override this handler.
     this.logger.debug(msg);
     window.postMessage(msg);
+  };
+
+  // Handle click events on the floatie.
+  clickHandler = (event) => {
+    if (
+      !this.isFloatieActive ||
+      event.target?.nodeName !== "LI" ||
+      !this.lastInput
+    ) {
+      return;
+    }
+
+    if (
+      !(event.target as HTMLElement).parentElement?.classList.contains(
+        "emoji-list"
+      ) ||
+      !(event.target as HTMLElement).closest(".winbox")
+    ) {
+      return;
+    }
+
+    // Emoji was clicked.
+    const emoji = (event.target as HTMLElement).innerText;
+    this.insertEmojiIntoInput(emoji, this.lastInput);
+    // TODO: maybe update "clicked_emojis" in storage.
+    this.maybeCloseFloatie(event);
   };
 
   // Keypress event is only raised by character keys on input-like elements.
@@ -42,11 +69,13 @@ export class Floatie {
     this.logger.debug("#keypress:", event.key);
     if (event.key === ":") {
       this.maybeActivateFloatie(event);
+      this.lastInput = event.target as HTMLInputElement;
     } else if (event.key === " " && this.isFloatieActive) {
       this.maybeCloseFloatie(event);
     } else if (this.isFloatieActive) {
       this.query += event.key;
       this.maybeUpdateSuggestion(event);
+      this.lastInput = event.target as HTMLInputElement;
     }
   };
 
@@ -104,21 +133,23 @@ export class Floatie {
       // insert last selected emoji.
       const selectedEmoji = this.matchingEmojis.find((e) => e.selected);
       if (selectedEmoji) {
-        const input = e.target;
-        const caretPos = input.selectionStart;
-        const context = input.value.slice(0, caretPos);
-        const colonIndex = context.lastIndexOf(":");
-        const pretext = context.slice(0, colonIndex);
-        const posttext = context.slice(caretPos, context.length);
-        const emoji = selectedEmoji.emoji;
-        const newContext = pretext + emoji + posttext;
-        input.value = newContext;
-        input.selectionStart = caretPos + emoji.length - 1;
-        input.selectionEnd = caretPos + emoji.length - 1;
+        this.insertEmojiIntoInput(selectedEmoji.emoji, e.target);
         this.maybeCloseFloatie(e);
       }
     }
   };
+
+  insertEmojiIntoInput(emoji: string, input: HTMLInputElement) {
+    const caretPos = input.selectionStart ?? 0;
+    const context = input.value.slice(0, caretPos);
+    const colonIndex = context.lastIndexOf(":");
+    const pretext = context.slice(0, colonIndex);
+    const posttext = context.slice(caretPos, context.length);
+    const newContext = pretext + emoji + posttext;
+    input.value = newContext;
+    input.selectionStart = caretPos + emoji.length - 1;
+    input.selectionEnd = caretPos + emoji.length - 1;
+  }
 
   // Ideal for observing events that we don't mind modifying the input element (e.g. backspace)
   keyupHandler = (e) => {
@@ -229,6 +260,7 @@ export class Floatie {
       this.query = "";
       this.matchingEmojis = [];
       this.logger.log("floatie deactivated", e);
+      this.lastInput = null;
       this.renderer({
         application: "emoji-keyboard",
         action: "escape",
