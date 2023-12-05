@@ -1,6 +1,7 @@
 import "../content-script/content-script"; // To inject popup for dev mode.
 import { Config, SettingsUI } from "../utils/settings/settings";
 import "./options.css";
+import "../utils/feedback/feedback";
 
 const configOptions: Config[] = [
   {
