@@ -120,9 +120,11 @@ export class SettingsUI extends HTMLElement {
       actualInput.min = config.min ?? "0";
       actualInput.max = config.max ?? "5";
       actualInput.step = config.step ?? "1";
-      actualInput.addEventListener("input", (e: Event) =>
-        this.saveChange(config, (e.target as HTMLInputElement).value),
-      );
+      actualInput.nextElementSibling!.innerHTML = actualInput.value;
+      actualInput.addEventListener("input", (e: Event) => {
+        this.saveChange(config, (e.target as HTMLInputElement).value);
+        actualInput.nextElementSibling!.innerHTML = actualInput.value;
+      });
     }
 
     if (config.type === "select") {
