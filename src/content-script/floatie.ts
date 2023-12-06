@@ -139,18 +139,6 @@ export class Floatie {
     }
   };
 
-  insertEmojiIntoInput(emoji: string, input: HTMLInputElement) {
-    const caretPos = input.selectionStart ?? 0;
-    const context = input.value.slice(0, caretPos);
-    const colonIndex = context.lastIndexOf(":");
-    const pretext = context.slice(0, colonIndex);
-    const posttext = context.slice(caretPos, context.length);
-    const newContext = pretext + emoji + posttext;
-    input.value = newContext;
-    input.selectionStart = caretPos + emoji.length - 1;
-    input.selectionEnd = caretPos + emoji.length - 1;
-  }
-
   // Ideal for observing events that we don't mind modifying the input element (e.g. backspace)
   keyupHandler = (e) => {
     this.lastMousePosition = {
@@ -247,13 +235,6 @@ export class Floatie {
     });
   }
 
-  selectTheFirstEmoji() {
-    this.matchingEmojis.forEach((e) => (e.selected = false));
-    if (this.matchingEmojis.length > 0) {
-      this.matchingEmojis[0].selected = true;
-    }
-  }
-
   maybeCloseFloatie(e) {
     if (this.isFloatieActive) {
       this.isFloatieActive = false;
@@ -266,6 +247,25 @@ export class Floatie {
         action: "escape",
         point: e.target.getBoundingClientRect(),
       });
+    }
+  }
+
+  insertEmojiIntoInput(emoji: string, input: HTMLInputElement) {
+    const caretPos = input.selectionStart ?? 0;
+    const context = input.value.slice(0, caretPos);
+    const colonIndex = context.lastIndexOf(":");
+    const pretext = context.slice(0, colonIndex);
+    const posttext = context.slice(caretPos, context.length);
+    const newContext = pretext + emoji + posttext;
+    input.value = newContext;
+    input.selectionStart = caretPos + emoji.length - 1;
+    input.selectionEnd = caretPos + emoji.length - 1;
+  }
+
+  selectTheFirstEmoji() {
+    this.matchingEmojis.forEach((e) => (e.selected = false));
+    if (this.matchingEmojis.length > 0) {
+      this.matchingEmojis[0].selected = true;
     }
   }
 
