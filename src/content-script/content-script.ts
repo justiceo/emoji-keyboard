@@ -43,18 +43,10 @@ class ContentScript {
 
   onMessageHandler = (event) => {
     if (event.origin !== window.location.origin) {
-      this.logger.debug(
-        "Ignoring message from different origin",
-        event.origin,
-        event.data
-      );
       return;
     }
 
     if (event.data.application !== manifest.__package_name) {
-      this.logger.debug(
-        "Ignoring origin messsage not initiated by emoji-keyboard"
-      );
       return;
     }
 

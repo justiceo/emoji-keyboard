@@ -20,7 +20,7 @@ const configOptions: Config[] = [
     default_value: false,
   },
   {
-    id: "previewr-width",
+    id: "emoji-columns",
     type: "range",
     title: "Emojis per row",
     description: "The number of emojis to show per row.",
@@ -30,7 +30,7 @@ const configOptions: Config[] = [
     step: "1",
   },
   {
-    id: "previewr-height",
+    id: "emoji-rows",
     type: "range",
     title: "Number of rows",
     description: "The number of emoji rows to show.",
