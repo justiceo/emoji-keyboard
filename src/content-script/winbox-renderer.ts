@@ -60,13 +60,6 @@ export class WinboxRenderer {
       });
       el.addEventListener("click", (e) => {
         navigator.clipboard.writeText(emoji.emoji);
-        Storage.getAndUpdate(CLICKED_EMOJIS, (clickedEmojis) => {
-          clickedEmojis[emoji] = {
-            lastInteraction: Date.now(),
-            count: clickedEmojis[emoji]?.count + 1 || 1,
-          };
-          return clickedEmojis;
-        });
         this.dialog!.dom.querySelector(".wb-notice").classList.add("success");
         this.dialog!.dom.querySelector(".wb-notice").innerHTML =
           "copied to clipboard!";

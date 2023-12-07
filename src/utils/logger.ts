@@ -29,7 +29,6 @@ export class Logger {
     if (!IS_DEV_BUILD) {
       this.initSentry();
     }
-    this.listenForBgLogs();
   }
 
   initSentry() {
@@ -49,7 +48,7 @@ export class Logger {
       this.internalLogTagOverride(
         message.data.level,
         message.data.tag,
-        ...message.data.messages,
+        ...message.data.messages
       );
     });
   }

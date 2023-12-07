@@ -5,7 +5,6 @@ import { WinboxRenderer } from "./winbox-renderer";
 import manifest from "../manifest.json";
 import { Floatie } from "./floatie";
 import { Searcher } from "./searcher";
-import "./set-up-emojis";
 
 // Listen for ":" keydown
 // Show a floaty with suggestions based on last three keywords (minus articles)
@@ -19,9 +18,11 @@ class ContentScript {
   isFloatieActive = false;
   query = "";
 
-  init() {
+  async init() {
     if (this.inApplicationIframe()) {
     } else {
+      this.logger.listenForBgLogs();
+
       // Add event listeners for main window.
       window.addEventListener("message", this.onMessageHandler, false);
       document.onscroll = this.winboxRenderer.onEscHandler;
@@ -33,6 +34,7 @@ class ContentScript {
       window.addEventListener("keydown", this.floatie.keydownHandler);
       document.addEventListener("click", this.floatie.clickHandler);
 
+      await this.floatie.init();
       this.floatie.renderer = (msg) => this.winboxRenderer.handleMessage(msg);
       this.floatie.searchHandler = (query) => this.searcher.search(query);
       this.floatie.suggestHandler = (query) => this.searcher.suggest(query);
@@ -81,7 +83,7 @@ class ContentScript {
 }
 
 Storage.get("blocked-sites").then((sites) => {
-  if (!sites.includes(window.location.hostname)) {
+  if (!sites || !sites.includes(window.location.hostname)) {
     new ContentScript().init();
   }
 });

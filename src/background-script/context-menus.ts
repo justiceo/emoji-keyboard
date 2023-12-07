@@ -1,5 +1,5 @@
 import Analytics from "../utils/analytics";
-import { Logger } from "../utils/logger";
+import { RemoteLogger } from "../utils/logger";
 import Storage from "../utils/storage";
 /*
  * Set up context menu (right-click menu) for different conexts.
@@ -20,7 +20,7 @@ interface MenuItem {
  */
 declare var IS_DEV_BUILD: boolean;
 class ContextMenu {
-  logger = new Logger(this);
+  logger = new RemoteLogger(this);
 
   RELOAD_ACTION: MenuItem = {
     menu: {

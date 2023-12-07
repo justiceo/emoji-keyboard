@@ -11,6 +11,14 @@ export class Floatie {
   lastInput: HTMLInputElement | null;
   matchingEmojis: any[] = [];
 
+  async init() {
+    // Initialize emojis list in storage.
+    const clickedEmojis = await Storage.get(CLICKED_EMOJIS);
+    if (!clickedEmojis) {
+      await Storage.put(CLICKED_EMOJIS, []);
+    }
+  }
+
   renderer = (msg) => {
     // Anyone can override this handler.
     this.logger.debug(msg);
@@ -39,7 +47,7 @@ export class Floatie {
     // Emoji was clicked.
     const emoji = (event.target as HTMLElement).innerText;
     this.insertEmojiIntoInput(emoji, this.lastInput);
-    // TODO: maybe update "clicked_emojis" in storage.
+    this.markEmojiAsClicked(emoji);
     this.maybeCloseFloatie(event);
   };
 
@@ -134,6 +142,7 @@ export class Floatie {
       const selectedEmoji = this.matchingEmojis.find((e) => e.selected);
       if (selectedEmoji) {
         this.insertEmojiIntoInput(selectedEmoji.emoji, e.target);
+        this.markEmojiAsClicked(selectedEmoji.emoji);
         this.maybeCloseFloatie(e);
       }
     }
@@ -267,6 +276,20 @@ export class Floatie {
     if (this.matchingEmojis.length > 0) {
       this.matchingEmojis[0].selected = true;
     }
+  }
+
+  markEmojiAsClicked(emoji: string) {
+    Storage.getAndUpdate(CLICKED_EMOJIS, (clickedEmojis) => {
+      clickedEmojis.unshift({
+        emoji: emoji,
+        lastInteraction: Date.now(),
+      });
+
+      if (clickedEmojis.length > 30) {
+        clickedEmojis = clickedEmojis.slice(0, 30);
+      }
+      return clickedEmojis;
+    });
   }
 
   suggestHandler(context: string, recentEmojis) {
