@@ -173,7 +173,6 @@ export class Floatie {
   };
 
   async maybeActivateFloatie(e) {
-    this.isFloatieActive = true;
     const context = e.target.value.slice(0, e.target.selectionStart).trim();
     this.matchingEmojis = await Storage.get(CLICKED_EMOJIS);
 
@@ -189,6 +188,8 @@ export class Floatie {
       if (this.matchingEmojis.length < 10) {
         return;
       }
+
+      this.isFloatieActive = true;
       this.selectTheFirstEmoji();
       this.renderer({
         application: "emoji-keyboard",
@@ -209,6 +210,8 @@ export class Floatie {
       if (this.matchingEmojis.length === 0) {
         return;
       }
+
+      this.isFloatieActive = true;
       this.selectTheFirstEmoji();
       this.renderer({
         application: "emoji-keyboard",
