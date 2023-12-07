@@ -3,7 +3,7 @@
     "description": "__MSG_appDesc__",
     "short_name": "__MSG_appShortName_",
     "homepage_url": "https://chrome.google.com/webstore/detail/nekacekgelnakbmhepjioandkacfablo",
-    "version": "23.12.6",
+    "version": "23.12.7",
     "manifest_version": 3,
     "default_locale": "en",
     "author": "Justice Ogbonna",
