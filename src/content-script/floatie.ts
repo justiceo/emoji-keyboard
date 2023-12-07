@@ -182,6 +182,13 @@ export class Floatie {
     // This is non-trivial - https://stackoverflow.com/a/39425959
 
     if (context.length === 0) {
+      // Maybe show recents.
+      if (await Storage.get("hide-recents")) {
+        return;
+      }
+      if (this.matchingEmojis.length < 10) {
+        return;
+      }
       this.selectTheFirstEmoji();
       this.renderer({
         application: "emoji-keyboard",
@@ -195,6 +202,13 @@ export class Floatie {
     } else {
       // Display suggestions based on context.
       this.matchingEmojis = this.suggestHandler(context, this.matchingEmojis);
+      // Maybe show recents.
+      if (await Storage.get("hide-suggestions")) {
+        return;
+      }
+      if (this.matchingEmojis.length === 0) {
+        return;
+      }
       this.selectTheFirstEmoji();
       this.renderer({
         application: "emoji-keyboard",

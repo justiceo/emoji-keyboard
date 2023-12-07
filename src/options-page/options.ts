@@ -12,6 +12,14 @@ const configOptions: Config[] = [
     default_value: false,
   },
   {
+    id: "hide-suggestions",
+    type: "switch",
+    title: "Hide Suggestions",
+    description:
+      "Do not show suggestions based on prior input upon invocation.",
+    default_value: false,
+  },
+  {
     id: "previewr-width",
     type: "range",
     title: "Emojis per row",
