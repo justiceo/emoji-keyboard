@@ -127,8 +127,8 @@ export class WinboxRenderer {
       header: 20,
       background: "white",
       color: "black",
-      width: 32 * ((await Storage.get("emoji-columns")) ?? 10) + "px", // step is 32px
-      height: 20 + 31 * ((await Storage.get("emoji-rows")) ?? 2) + "px", // 20px+ row is 31px, 2 => 62px
+      width: 32 * (await Storage.getConfig("emoji-columns")) + "px", // step is 32px
+      height: 20 + 31 * (await Storage.getConfig("emoji-rows")) + "px", // 20px+ row is 31px, 2 => 62px
       autosize: false,
       class: [
         "no-max",
@@ -176,9 +176,9 @@ export class WinboxRenderer {
     const placeholder = document.createElement("div");
     // These dimensions need to match that of the dialog precisely.
     placeholder.style.width =
-      32 * ((await Storage.get("emoji-columns")) ?? 10) + "px";
+      32 * (await Storage.getConfig("emoji-columns")) + "px";
     placeholder.style.height =
-      20 + 31 * ((await Storage.get("emoji-rows")) ?? 2) + "px";
+      20 + 31 * (await Storage.getConfig("emoji-rows")) + "px";
     placeholder.style.position = "fixed";
     placeholder.style.visibility = "hidden";
     document.body.appendChild(placeholder);

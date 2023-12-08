@@ -2,9 +2,9 @@ import "./content-script.css";
 import { Logger } from "../utils/logger";
 import Storage from "../utils/storage";
 import { WinboxRenderer } from "./winbox-renderer";
-import manifest from "../manifest.json";
 import { Floatie } from "./floatie";
 import { Searcher } from "./searcher";
+import { packageName } from "../config";
 
 // Listen for ":" keydown
 // Show a floaty with suggestions based on last three keywords (minus articles)
@@ -46,7 +46,7 @@ class ContentScript {
       return;
     }
 
-    if (event.data.application !== manifest.__package_name) {
+    if (event.data.application !== packageName) {
       return;
     }
 
@@ -67,7 +67,7 @@ class ContentScript {
 
   inApplicationIframe() {
     try {
-      return window.name === manifest.__package_name + "/mainframe";
+      return window.name === packageName + "/mainframe";
     } catch (e) {
       return false;
     }

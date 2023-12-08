@@ -1,18 +1,12 @@
 import Analytics from "../utils/analytics";
 import { RemoteLogger } from "../utils/logger";
 import Storage from "../utils/storage";
+import { contextMenus, MenuItem } from "../config";
 /*
  * Set up context menu (right-click menu) for different conexts.
  * See reference https://developer.chrome.com/docs/extensions/reference/contextMenus/#method-create.
  * Max number of browser_action menu items: 6 - https://developer.chrome.com/docs/extensions/reference/contextMenus/#property-ACTION_MENU_TOP_LEVEL_LIMIT
  */
-interface MenuItem {
-  menu: chrome.contextMenus.CreateProperties;
-  handler: (
-    info: chrome.contextMenus.OnClickData,
-    tab?: chrome.tabs.Tab
-  ) => void;
-}
 
 /*
  * Prefer arrow method names here -
@@ -24,7 +18,7 @@ class ContextMenu {
 
   RELOAD_ACTION: MenuItem = {
     menu: {
-      id: "audate-reload",
+      id: "reload-extension",
       title: "Reload Extension",
       visible: true,
       contexts: ["action"],
@@ -92,7 +86,10 @@ class ContextMenu {
     },
   };
 
-  browserActionContextMenu: MenuItem[] = [this.DISABLE_ON_SITE];
+  browserActionContextMenu: MenuItem[] = [
+    this.DISABLE_ON_SITE,
+    ...contextMenus,
+  ];
 
   init = () => {
     // Maybe add dev-only actions.

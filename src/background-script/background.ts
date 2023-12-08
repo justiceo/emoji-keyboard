@@ -6,9 +6,9 @@ import "./context-menus";
 import "./icon-updater";
 import "./feedback-checker";
 import { getOrCreateSessionId } from "../utils/session-id";
-import { Logger } from "../utils/logger";
+import { RemoteLogger } from "../utils/logger";
 
-const logger = new Logger("service-worker");
+const logger = new RemoteLogger("service-worker");
 // All service-worker messages should go through this function.
 const onMessage = (
   message: any,

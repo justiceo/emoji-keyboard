@@ -1,10 +1,10 @@
-import { Logger } from "../utils/logger";
+import { RemoteLogger } from "../utils/logger";
 import Analytics from "../utils/analytics";
 import Storage from "../utils/storage";
 import { INSTALL_TIME_MS } from "../utils/storage";
+import { uninstallUrl } from "../config";
 
-const logger = new Logger("post-install");
-const uninstallUrl = "https://forms.gle/8e94ypTgY3ZQiR948";
+const logger = new RemoteLogger("post-install");
 const welcomeUrl = chrome.runtime.getURL("welcome/welcome.html");
 
 const onInstalled = (details: chrome.runtime.InstalledDetails) => {
@@ -53,3 +53,5 @@ function checkCommandShortcuts() {
     }
   });
 }
+
+// TODO: Implement requestUpdateCheck.

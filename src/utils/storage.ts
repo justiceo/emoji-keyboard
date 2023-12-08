@@ -1,4 +1,5 @@
 /* A light wrapper around chrome storage API. */
+import { configOptions } from "../config";
 export const FEEDBACK_DATA_KEY = "feedback_data";
 export const INSTALL_TIME_MS = "install_time_ms";
 export const SUCCESSFUL_INTERACTIONS = "successful_interactions";
@@ -29,13 +30,21 @@ class Storage {
     return response[key];
   }
 
+  // An alias for #get for accessing configOptions.
+  async getConfig(key: string): Promise<any> {
+    return (
+      (await this.get(key)) ??
+      configOptions.find((c) => c.id === key)?.default_value
+    );
+  }
+
   getAll(): Promise<any> {
     return this.storageService.get(null);
   }
 
   async getAndUpdate(
     key: string,
-    updateFn: (val) => Promise<any>,
+    updateFn: (val) => Promise<any>
   ): Promise<void> {
     const data = await this.get(key);
     return this.put(key, await updateFn(data));
