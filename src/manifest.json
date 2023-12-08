@@ -54,7 +54,7 @@
     }
   ],
   "background": {
-    "service_worker": "background-script/background.js",
+    "service_worker": "background-script/service-worker.js",
     "__firefox__persistent": "false"
   },
   "commands": {

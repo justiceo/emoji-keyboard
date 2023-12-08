@@ -127,7 +127,7 @@ class Build {
     return esbuild
       .build({
         entryPoints: [
-          "src/background-script/background.ts",
+          "src/background-script/service-worker.ts",
           "src/content-script/content-script.ts",
           "src/popup/popup.ts",
           "src/standalone/emoji.ts",
