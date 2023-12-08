@@ -1,14 +1,22 @@
 {
-    "appName": {
-        "message": "Smart Emoji Keyboard",
-        "description": "The name of the extension"
-    },
-    "appShortName": {
-        "message": "Emoji Keyboard",
-        "description": "The short-version name of the extension name"
-    },
-    "appDesc": {
-        "message": "Search and insert emojis in texts by typing ':'",
-        "description": "The description of your extension"
-    }
+  "appName": {
+    "message": "Smart Emoji Keyboard",
+    "description": "The name of the extension"
+  },
+  "appShortName": {
+    "message": "Emoji Keyboard",
+    "description": "The short-version name of the extension name"
+  },
+  "appDesc": {
+    "message": "Search and insert emojis in texts by typing ':'",
+    "description": "The description of your extension"
+  },
+  "reportAnIssue": {
+    "message": "Report an issue",
+    "description": "Button text for reporting an issue"
+  },
+  "showDemo": {
+    "message": "Show demo",
+    "description": "Button text for showing demo"
+  }
 }

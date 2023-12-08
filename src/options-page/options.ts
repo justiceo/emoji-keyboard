@@ -3,7 +3,7 @@ import { SettingsUI } from "../utils/settings/settings";
 import "./options.css";
 import "../utils/feedback/feedback";
 import { configOptions, packageName } from "../config";
-import { appDescription, appName } from "../utils/i18n";
+import { appDescription, appName, i18n } from "../utils/i18n";
 import { Logger } from "../utils/logger";
 
 class Options {
@@ -24,7 +24,9 @@ class Options {
   setI18nText() {
     document.querySelector(".title")!.textContent = appName;
     document.querySelector(".description")!.textContent = appDescription;
-    // Todo: set show-demo and report and issue.
+    document.querySelector("#show-preview")!.textContent = i18n("showDemo");
+    document.querySelector(".report-issue")!.textContent =
+      i18n("reportAnIssue");
   }
 
   registerDemoClickHandler() {

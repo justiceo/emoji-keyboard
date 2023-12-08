@@ -1,7 +1,8 @@
 import Analytics from "../utils/analytics";
 import { RemoteLogger } from "../utils/logger";
 import Storage from "../utils/storage";
-import { contextMenus, MenuItem } from "../config";
+import { contextMenus } from "../config";
+import { MenuItem } from "../extension";
 /*
  * Set up context menu (right-click menu) for different conexts.
  * See reference https://developer.chrome.com/docs/extensions/reference/contextMenus/#method-create.
