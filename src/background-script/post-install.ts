@@ -9,7 +9,11 @@ const welcomeUrl = chrome.runtime.getURL("welcome/welcome.html");
 
 const onInstalled = (details: chrome.runtime.InstalledDetails) => {
   // Set the installation time in storage.
-  Storage.put(INSTALL_TIME_MS, Date.now());
+  Storage.get(INSTALL_TIME_MS).then((installTime) => {
+    if (installTime == null) {
+      Storage.put(INSTALL_TIME_MS, Date.now());
+    }
+  });
 
   // On fresh install, open page how to use extension.
   if (details.reason === "install") {
