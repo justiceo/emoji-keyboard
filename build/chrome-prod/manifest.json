@@ -3,7 +3,7 @@
     "description": "__MSG_appDesc__",
     "short_name": "__MSG_appShortName_",
     "homepage_url": "https://chrome.google.com/webstore/detail/nekacekgelnakbmhepjioandkacfablo",
-    "version": "23.12.7",
+    "version": "23.12.13",
     "manifest_version": 3,
     "default_locale": "en",
     "author": "Justice Ogbonna",
@@ -29,8 +29,7 @@
     "content_scripts": [
         {
             "matches": [
-                "http://*/*",
-                "https://*/*"
+                "<all_urls>"
             ],
             "all_frames": true,
             "js": [
@@ -83,7 +82,7 @@
         }
     ],
     "background": {
-        "service_worker": "background-script/background.js"
+        "service_worker": "background-script/service-worker.js"
     },
     "commands": {
         "_execute_action": {
