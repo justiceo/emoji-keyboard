@@ -18,5 +18,35 @@
   "showDemo": {
     "message": "Show demo",
     "description": "Button text for showing demo"
+  },
+  "optionBlockedSites": {
+    "message": "Disabled on Websites"
+  },
+  "optionBlockedSitesDesc": {
+    "message": "Extension will not run on these sites. Enter one site per line."
+  },
+  "optionHideRecents": {
+    "message": "Hide recents"
+  },
+  "optionHideRecentsDesc": {
+    "message": "Do not show the most recently used emojis upon invocation."
+  },
+  "optionHideSuggestions": {
+    "message": "Hide suggestions"
+  },
+  "optionHideSuggestionsDesc": {
+    "message": "Do not show suggestions based on prior input upon invocation."
+  },
+  "optionsEmojiColumns": {
+    "message": "Emojis per row"
+  },
+  "optionsEmojiColumnsDesc": {
+    "message": "The number of emojis to show per row."
+  },
+  "optionEmojiRows": {
+    "message": "Number of rows"
+  },
+  "optionEmojiRowsDesc": {
+    "message": "The number of emoji rows to show."
   }
 }

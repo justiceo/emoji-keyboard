@@ -12,23 +12,22 @@ export const configOptions: Config[] = [
   {
     id: "hide-recents",
     type: "switch",
-    title: "Hide Recents",
-    description: "Do not show the most recently used emojis upon invocation.",
+    title: "optionHideRecents",
+    description: "optionHideRecentsDesc",
     default_value: false,
   },
   {
     id: "hide-suggestions",
     type: "switch",
-    title: "Hide Suggestions",
-    description:
-      "Do not show suggestions based on prior input upon invocation.",
+    title: "optionHideSuggestions",
+    description: "optionHideSuggestionsDesc",
     default_value: false,
   },
   {
     id: "emoji-columns",
     type: "range",
-    title: "Emojis per row",
-    description: "The number of emojis to show per row.",
+    title: "optionsEmojiColumns",
+    description: "optionsEmojiColumnsDesc",
     default_value: 10,
     min: "6",
     max: "15",
@@ -37,8 +36,8 @@ export const configOptions: Config[] = [
   {
     id: "emoji-rows",
     type: "range",
-    title: "Number of rows",
-    description: "The number of emoji rows to show.",
+    title: "optionEmojiRows",
+    description: "optionEmojiRowsDesc",
     default_value: 1,
     min: "1",
     max: "4",
@@ -46,9 +45,8 @@ export const configOptions: Config[] = [
   {
     id: "blocked-sites",
     type: "textarea",
-    title: "Disabled on Websites",
-    description:
-      "Extension will not run on these sites. Enter one site per line.",
+    title: "optionBlockedSites",
+    description: "optionBlockedSitesDesc",
     default_value: "",
   },
 ];
