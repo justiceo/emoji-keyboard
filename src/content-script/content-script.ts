@@ -50,6 +50,11 @@ class ContentScript {
       return;
     }
 
+    if (event.data.action === "show-demo") {
+      this.floatie.activateForDemo(event);
+      return;
+    }
+
     this.winboxRenderer.handleMessage(event.data);
   };
 

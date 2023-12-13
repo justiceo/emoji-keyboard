@@ -4,51 +4,17 @@
 
 Use emojis anywhere on the web!
 
+Download on the Chrome Webstore - https://chrome.google.com/webstore/detail/nekacekgelnakbmhepjioandkacfablo
+
 ![Screenshot](src/assets/screenshot.png "Screenshot")
-
-## Downloads
-
-<table cellspacing="0" cellpadding="0">
-  <tr style="text-align: center">
-    <td valign="center">
-      <a align="center" href="https://chrome.google.com/webstore/detail/nekacekgelnakbmhepjioandkacfablo">
-        <img src="src/assets/browser-chrome.png" alt="Chrome web store" width="50" />
-        <p align="center">Chrome Web Store</p>
-      </a>
-    </td>
-    <td valign="center">
-      <a href="https://addons.mozilla.org/firefox/extensions/">
-        <img src="src/assets/browser-firefox.png" alt="Firefox add-ons" width="50" />
-        <p align="center">Firefox Add-ons</p>
-      </a>
-    </td>
-        <td valign="center">
-      <a href="https://addons.opera.com/en/extensions/">
-        <img src="src/assets/browser-opera.png" alt="Opera add-ons" width="50"/>
-        <p align="center">Opera Add-ons</p>
-      </a>
-    </td>
-        <td valign="center">
-      <a href="https://microsoftedge.microsoft.com/addons">
-        <img src="src/assets/browser-ms-edge.png" alt="MS Edge add-ons" width="50" />
-        <p align="center">Ms Edge Add-ons</p>
-      </a>
-    </td>
-        <td valign="center">
-      <a href="https://apps.apple.com/app/apple-store/">
-        <img src="src/assets/browser-safari.png" alt="Safari add-ons" width="50" />
-        <p align="center">Safari Extensions</p>
-      </a>
-    </td>
-  </tr>
-</table>
 
 ## Features
 
+- It can suggest relevant emojis. When invoked after the text "Congrats!", it will suggest ':confetti'
+- Intelligent search algorithm makes it easier to find the emoji you're looking, no need to remember the emoji name, typos welcome.
 - Privacy-friendly.
 - Highly configurable options page.
 - Disable for specific sites.
-- Sync settings across browsers.
 
 ## Project setup
 

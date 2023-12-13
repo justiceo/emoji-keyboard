@@ -33,7 +33,7 @@ class Options {
     document.querySelector("#show-preview")?.addEventListener("click", () => {
       this.logger.debug("Handling demo click");
       window.postMessage(
-        { application: packageName, action: "render-emojis" },
+        { application: packageName, action: "show-demo" },
         window.location.origin
       );
     });

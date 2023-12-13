@@ -17,6 +17,16 @@ export class Floatie {
     if (!clickedEmojis) {
       await Storage.put(CLICKED_EMOJIS, []);
     }
+    window.addEventListener("mousemove", (e: MouseEvent) => {
+      this.lastMousePosition = {
+        width: 300,
+        height: 50,
+        x: e.x,
+        y: e.y,
+        left: e.x,
+        top: e.y,
+      } as DOMRect;
+    });
   }
 
   renderer = (msg) => {
@@ -171,6 +181,20 @@ export class Floatie {
       this.maybeCloseFloatie(e);
     }
   };
+
+  async activateForDemo(messageEvent) {
+    this.matchingEmojis = this.searchHandler("smile", "", []);
+    this.isFloatieActive = true;
+    this.renderer({
+      application: "emoji-keyboard",
+      action: "render-emojis",
+      data: {
+        title: "Demo",
+        emojis: this.matchingEmojis,
+      },
+      point: this.lastMousePosition,
+    });
+  }
 
   async maybeActivateFloatie(e) {
     const context = e.target.value.slice(0, e.target.selectionStart).trim();
