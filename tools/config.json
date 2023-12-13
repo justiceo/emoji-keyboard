@@ -1,0 +1,12 @@
+{
+  "additionalEntryPoints": [
+    "src/utils/settings/settings.ts",
+    "src/utils/winbox/winbox.js",
+    "src/standalone/emoji.ts"
+  ],
+  "additionalAssetsToCopy": {
+    "src/content-script/winbox-extended.css": "content-script/winbox-extended.css",
+    "src/content-script/demo.html": "content-script/demo.html",
+    "src/standalone/emoji.html": "standalone/emoji.html"
+  }
+}
