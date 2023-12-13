@@ -82,7 +82,8 @@ class ContentScript {
 Storage.get("blocked-sites").then((sites) => {
   if (
     !sites ||
-    (window.location.hostname && !sites.includes(window.location.hostname))
+    !window.location.hostname || // for file urls
+    !sites.includes(window.location.hostname)
   ) {
     new ContentScript().init();
   }
