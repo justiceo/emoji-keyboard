@@ -43,6 +43,9 @@
     "description": "Button text for showing demo"
   },
 
+  "optionsSaveSuccess": {
+    "message": "Successfully updated settings"
+  },
   "optionBlockedSites": {
     "message": "Disabled on Websites"
   },

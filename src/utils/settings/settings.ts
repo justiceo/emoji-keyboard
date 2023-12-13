@@ -159,6 +159,8 @@ export class SettingsUI extends HTMLElement {
     let toastEl = this.shadowRoot?.querySelector(".toast-container");
     if (!toastEl) {
       toastEl = this.template.querySelector(".toast-container")!;
+      toastEl.querySelector(".toast-body span")!.innerHTML =
+        i18n("optionsSaveSuccess");
       this.shadowRoot?.append(toastEl);
     }
     const toast = new Toast(toastEl.querySelector("#liveToast"), {
