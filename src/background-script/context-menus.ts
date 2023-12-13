@@ -81,6 +81,7 @@ class ContextMenu {
           return sites;
         }
 
+        // TODO: File urls do not have hostname.
         const newSites = sites ? sites + "\n" + url.hostname : url.hostname;
         return newSites;
       });
