@@ -11,6 +11,29 @@
     "message": "Search and insert emojis in texts by typing ':'",
     "description": "The description of your extension"
   },
+
+  "fdbkHowAreWeDoing": {
+    "message": "How are we doing?"
+  },
+  "fdbkCareToShare": {
+    "message": "Glad you like it! Can you help us share the ❤️?"
+  },
+  "fdbkHowCanWeImprove": {
+    "message": "How can we improve?"
+  },
+  "fdbkThanks": {
+    "message": "Thanks for the feedback!"
+  },
+  "fdbkRateOnWebstore": {
+    "message": "Rate on Webstore"
+  },
+  "fdbkNoResponse": {
+    "message": "No"
+  },
+  "fdbkSumbit": {
+    "message": "Submit"
+  },
+
   "reportAnIssue": {
     "message": "Report an issue",
     "description": "Button text for reporting an issue"
@@ -19,6 +42,7 @@
     "message": "Show demo",
     "description": "Button text for showing demo"
   },
+
   "optionBlockedSites": {
     "message": "Disabled on Websites"
   },
