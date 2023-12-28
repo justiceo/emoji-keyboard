@@ -1,1 +1,0 @@
-export const CLICKED_EMOJIS = "clicked_emojis";
